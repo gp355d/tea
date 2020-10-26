@@ -28,6 +28,11 @@ const routes = [
         path: 'aboutus',
         name: 'aboutus',
         component: () => import('../views/frontend/Aboutus.vue')
+      },
+      {
+        path: 'effect',
+        name: 'effect',
+        component: () => import('../views/frontend/Effect.vue')
       }
     ]
   }

@@ -8,6 +8,7 @@
     <div class="navbar-nav font-weight-bold">
       <router-link class="nav-item nav-link" to="/products">前台產品列表<span class="sr-only">(current)</span></router-link>
       <router-link class="nav-item nav-link" to="/aboutus">關於我們</router-link>
+      <router-link class="nav-item nav-link" to="/effect">茶的知識</router-link>
     </div>
   </div>
 </nav>
