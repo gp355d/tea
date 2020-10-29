@@ -5,6 +5,8 @@ import App from './App.vue'
 import router from './router'
 import jquery from 'jquery'
 import 'bootstrap'
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 Vue.config.productionTip = false
 window.$ = jquery
 Vue.use(VueAxios, axios)
@@ -13,6 +15,7 @@ Vue.filter('money', function (num) {
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   return '$' + parts.join('.')
 })
+Vue.component('Loading', Loading)
 new Vue({
   router,
   render: h => h(App)
