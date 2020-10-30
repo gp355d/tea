@@ -36,6 +36,7 @@
                         </div>
                         <div class="card-footer">
                             <button :disabled="loadingItem === item.id" type="button" class="btn btn-outline-danger btn-sm ml-auto" @click="addToCart(item.id)">
+                              <i class="spinner-grow spinner-grow-sm" v-if="loadingItem === item.id"></i>
                             加到購物車
                            </button>
                         </div>
@@ -77,6 +78,20 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
+    },
+    addToCart: function (id, quantity = 1) {
+      const vm = this
+      this.loadingItem = id
+      this.isLoading = true
+      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`
+      const carts = {
+        product: id,
+        quantity: quantity
+      }
+      this.$http.post(api, carts).then(function (res) {
+        vm.loadingItem = ''
+        vm.isLoading = false
+      })
     }
   },
   computed: {

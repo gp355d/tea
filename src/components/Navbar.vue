@@ -9,7 +9,19 @@
       <router-link class="nav-item nav-link" to="/products">前台產品列表<span class="sr-only">(current)</span></router-link>
       <router-link class="nav-item nav-link" to="/aboutus">關於我們</router-link>
       <router-link class="nav-item nav-link" to="/effect">茶的知識</router-link>
+      <router-link class="nav-item nav-link" to="/effect"><Cart/></router-link>
     </div>
   </div>
 </nav>
 </template>
+<script>
+import Cart from '@/components/Cart.vue'
+export default {
+  data () {
+    return {}
+  },
+  components: {
+    Cart
+  }
+}
+</script>
