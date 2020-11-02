@@ -33,6 +33,11 @@ const routes = [
         path: 'effect',
         name: 'effect',
         component: () => import('../views/frontend/Effect.vue')
+      },
+      {
+        path: 'shopcart',
+        name: 'shopcart',
+        component: () => import('../views/frontend/Shopcart.vue')
       }
     ]
   }

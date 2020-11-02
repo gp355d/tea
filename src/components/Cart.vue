@@ -14,11 +14,14 @@ export default {
   },
   created () {
     this.getCart()
+    this.$bus.$on('update-total', () => {
+      this.getCart()
+    })
   },
   methods: {
     getCart () {
-      const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`
-      this.$http.get(url)
+      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`
+      this.$http.get(api)
         .then((res) => {
           this.cartTotal = res.data.data.length
         })

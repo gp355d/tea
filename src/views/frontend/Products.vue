@@ -24,7 +24,7 @@
                                 <h5 class="card-title d-inline mb-0 font-weight-bold">{{item.title}}</h5>
                                 <span class="badge badge-primary">{{item.category}}</span>
                             </div>
-                            <p class="card-text text-left" v-html="item.content">{{item.content}}</p>
+                            <p class="card-text" v-html="item.content">{{item.content}}</p>
                             <div class="text-right">
                                 <div class="h5" v-if="item.origin_price === item.price">原價{{item.origin_price | money}}元
                                 </div>
@@ -35,8 +35,9 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button :disabled="loadingItem === item.id" type="button" class="btn btn-outline-danger btn-sm ml-auto" @click="addToCart(item.id)">
+                            <button :disabled="loadingItem === item.id" type="button" class="btn btn-outline-danger btn-block ml-auto" @click="addToCart(item.id)">
                               <i class="spinner-grow spinner-grow-sm" v-if="loadingItem === item.id"></i>
+                              <i v-else class="fa fa-cart-plus"></i>
                             加到購物車
                            </button>
                         </div>
@@ -89,6 +90,7 @@ export default {
         quantity: quantity
       }
       this.$http.post(api, carts).then(function (res) {
+        vm.$bus.$emit('update-total')
         vm.loadingItem = ''
         vm.isLoading = false
       })
