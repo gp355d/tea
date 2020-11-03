@@ -1,17 +1,17 @@
 <template>
-<div class="container-fluid mb-3">
+<div class="container mb-3">
     <div class="row">
     <div class="col-md-6">
-        <router-link to="/products">
-            <div class="content d-flex justify-content-center align-items-center" style="background-image: url(https://images.unsplash.com/photo-1470162656305-6f429ba817bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80);background-position: center center; opacity: 0.5;background-size: cover;min-height: 100vh">
+        <router-link to="/products" class="text-light">
+            <div class="content d-flex justify-content-center align-items-center" style="background-image: url(https://images.unsplash.com/photo-1579887829663-67706e62e6ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80)">
             <h2>茶葉種類</h2>
             </div>
         </router-link>
 
     </div>
     <div class="col-md-6">
-        <router-link to="/effect">
-            <div class="content d-flex justify-content-center align-items-center" style="background-image: url(https://images.unsplash.com/photo-1590434434890-eee41ce7d4e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80);background-position: center center; opacity: 0.5;background-size: cover;min-height: 100vh">
+        <router-link to="/effect" class="text-dark">
+            <div class="content d-flex justify-content-center align-items-center" style="background-image: url(https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80)">
             <h2>茶葉好處</h2>
             </div>
         </router-link>
@@ -20,3 +20,14 @@
 </div>
 
 </template>
+<style lang="scss">
+.content {
+background-position: center center;
+background-size: cover;
+min-height: 50vh;
+opacity: 1;
+&:hover{
+opacity: 0.8;
+}
+}
+</style>
