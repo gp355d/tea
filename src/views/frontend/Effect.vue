@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="container py-4">
     <div class="row mb-2">
         <div class="col-md-8">
             <h2 class="font-weight-bold">喝茶好處</h2>
@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-md-12">
             <h3 class="font-weight-bold">6大茶類功效</h3>
-            <ul class="list-unstyled">
+            <ol class="feature">
                 <li>
                     <h4>白茶</h4>
                     <p>清熱解毒、生津止渴、提神醒腦</p>
@@ -44,8 +44,16 @@
                     <p>清熱解毒、祛痰止咳</p>
                     <p>黃茶味性較寒涼，介乎綠茶和白茶之間，屬輕微發酵的茶葉。</p>
                 </li>
-            </ul>
+            </ol>
         </div>
     </div>
 </div>
 </template>
+<style lang="scss" scoped>
+.feature li{
+    font-size: 24px;
+    & p{
+        font-size: 16px;
+    }
+}
+</style>

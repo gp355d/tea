@@ -1,6 +1,6 @@
 <template>
 <nav class="navbar navbar-expand-lg navbar-light bg-primary sticky-top">
-  <router-link class="navbar-brand" style="font-family: 'Lobster', cursive;" to="/">tea</router-link>
+  <router-link class="navbar-brand" style="font-family: 'Lobster', cursive;font-size: 2rem" to="/">tea</router-link>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

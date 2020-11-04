@@ -1,50 +1,38 @@
 <template>
-    <div class="container">
+    <div class="container py-4">
         <!-- <button type="button" @click.prevent="removeAllCartItem">clear</button> -->
         <loading :active.sync="isLoading"></loading>
         <div class="row justify-content-center">
         <div class="col-md-6 bg-white py-5" style="min-height: calc(100vh - 56px - 76px);">
-             <router-link class="h5" to="/products"><i class="fas fa-chevron-left mr-2"></i><span>繼續購物</span></router-link>
+             <router-link class="h5 text-primary" to="/products"><i class="fas fa-chevron-left mr-2"></i><span>繼續購物</span></router-link>
           <div class="d-flex justify-content-between">
-             <h2 class="mt-2">購物車清單</h2>
+             <h2 class="mt-2 font-weight-bold">購物車清單</h2>
           </div>
           <div class="d-flex mt-4 bg-light" v-for="item in carts" :key="item.product.id+1">
             <img :src="item.product.imageUrl[0]" alt="" style="width: 120px; height: 120px; object-fit: cover;">
             <div class="w-100 p-3 position-relative">
-              <a href="#" @click.prevent="removeCartItem(item.product.id)" class="position-absolute" style="top: 16px; right: 16px;"><i class="fas fa-times"></i></a>
+              <a href="#" @click.prevent="removeCartItem(item.product.id)" class="position-absolute" style="top: 16px; right: 16px;color:#20672d"><i class="fas fa-times"></i></a>
               <p class="mb-0 font-weight-bold">{{item.product.title}}</p>
               <p class="mb-1 text-muted" style="font-size: 14px;">{{item.product.content}}</p>
               <div class="d-flex justify-content-between align-items-center w-100">
                 <div class="input-group w-50 align-items-center">
                   <div class="input-group-prepend pr-1">
-                    <a href="#"> <i class="fas fa-minus"  @click.prevent="updateQuanity(item.product.id, item.quantity - 1)" :disabled="item.quantity === 1"></i></a>
+                    <button class="btn btn-outline-primary rounded-0 border-0" type="button" @click.prevent="updateQuanity(item.product.id, item.quantity - 1)" :disabled="item.quantity === 1"> <i class="fas fa-minus"></i></button>
                   </div>
                   <input  min="1" :value="item.quantity" @change="updateQuanity(item.product.id, item.quantity)" disabled type="number" class="form-control border-0 text-center my-auto shadow-none bg-light px-0" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                   <div class="input-group-append pl-1">
-                    <a href="#"><i class="fas fa-plus"  @click.prevent="updateQuanity(item.product.id, item.quantity + 1)"></i></a>
+                    <button class="btn btn-outline-primary rounded-0 border-0" type="button"><i class="fas fa-plus"  @click.prevent="updateQuanity(item.product.id, item.quantity + 1)"></i></button>
                   </div>
                 </div>
                 <p class="mb-0 ml-auto">{{item.product.price | money}}/{{item.product.unit}}</p>
               </div>
             </div>
           </div>
-          <table class="table mt-4 text-muted">
-            <tbody>
-              <tr>
-                <th scope="row" class="border-0 px-0 font-weight-normal">Lorem ipsum</th>
-                <td class="text-right border-0 px-0">NT$24,000</td>
-              </tr>
-              <tr>
-                <th scope="row" class="border-0 px-0 pt-0 font-weight-normal">Lorem ipsum</th>
-                <td class="text-right border-0 px-0 pt-0">NT$500</td>
-              </tr>
-            </tbody>
-          </table>
           <div class="d-flex justify-content-between mt-4">
             <p class="mb-0 h4 font-weight-bold">總計</p>
             <p class="mb-0 h4 font-weight-bold">{{cartTotal | money}}</p>
           </div>
-          <router-link to="/products" class="btn btn-dark btn-block mt-4 rounded-0 py-3">確認訂單</router-link>
+          <router-link to="/products" class="btn btn-primary btn-block mt-4 rounded-0 py-3">確認訂單</router-link>
         </div>
       </div>
         <!-- <div class="row justify-content-center">

@@ -1,6 +1,6 @@
 <template>
 
-<div class="container">
+<div class="container py-4">
   <loading :active.sync="isLoading"></loading>
     <div class="row">
         <div class="col-md-3">
@@ -14,7 +14,7 @@
         <div class="col-md-9">
             <div class="row">
                 <div class="col-md-4 mb-4" v-for="item in filtercategories" :key="item.id">
-                    <div class="card rounded">
+                    <div class="card rounded shadow">
                       <router-link :to="`/product/${ item.id }`">
                         <div style="height: 130px; background-size: cover; background-position:center"
                             :style="{backgroundImage: `url(${item.imageUrl[0]})`}"></div>
@@ -35,8 +35,8 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button :disabled="loadingItem === item.id" type="button" class="btn btn-outline-danger btn-block ml-auto" @click="addToCart(item.id)">
-                              <i class="spinner-grow spinner-grow-sm" v-if="loadingItem === item.id"></i>
+                            <button :disabled="loadingItem === item.id" type="button" class="btn btn-outline-primary btn-block ml-auto" @click="addToCart(item.id)">
+                              <i class="fas fa-spinner fa-spin" v-if="loadingItem === item.id"></i>
                               <i v-else class="fa fa-cart-plus"></i>
                             加到購物車
                            </button>
