@@ -1,0 +1,108 @@
+<template>
+<div class="d-flex justify-content-center container py-4">
+   <div class="row">
+    <div class="col-md-12">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-white font-weight-bold">
+              <li class="breadcrumb-item">
+                <router-link class="text-dark" to="/">首頁</router-link>
+              </li>
+              <li class="breadcrumb-item">
+                <router-link class="text-dark" to="/products">全部茶品</router-link>
+              </li>
+              <li class="breadcrumb-item active text-primary"
+                  aria-current="page">{{ tmpProducts.title }}</li>
+            </ol>
+          </nav>
+    <loading :active.sync="isLoading"></loading>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="product" :style="{backgroundImage: `url(${tmpProducts.imageUrl[0]})`}"></div>
+            </div>
+            <div class="col-md-6">
+                <h2 class="font-weight-bold">{{tmpProducts.title}}</h2>
+                <p>{{tmpProducts.content}}</p>
+                <h5 class="font-weight-bold my-4 text-right">
+                   {{tmpProducts.price | money}} / {{tmpProducts.unit}}
+                </h5>
+                    <div class="d-flex">
+                            <select name="unit" class="form-control mr-3"> v-model="product.num">
+                                <option :value="num" v-for="num in 5" :key="num">
+                                    {{ num }} {{ tmpProducts.unit }}
+                                </option>
+                            </select>
+                            <button type="button" class="btn btn-block btn-primary" @click.prevent="addToCart(tmpProducts.id, product.num)">
+                                <i class="fas fa-spinner fa-spin" v-if="tmpProducts.id === loadingItem"></i>
+                                加到購物車
+                            </button>
+                    </div>
+            </div>
+        </div>
+            </div>
+    </div>
+</div>
+</template>
+<script>
+export default {
+  data () {
+    return {
+      product: {
+        num: 1
+      },
+      tmpProducts: {
+        imageUrl: []
+      },
+      isLoading: false,
+      loadingItem: ''
+    }
+  },
+  created () {
+    this.getPeoductDetail()
+  },
+  methods: {
+    getPeoductDetail: function () {
+      const vm = this
+      const { id } = this.$route.params// 使用$route屬性取得id
+      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/product/${id}`// 取得前台單一產品資料API
+      this.isLoading = true
+      this.$http.get(api).then(function (res) {
+        vm.tmpProducts = res.data.data
+        vm.isLoading = false
+      })
+        .catch(function (error) {
+          console.log(error)
+          vm.isLoading = false
+        })
+    },
+    addToCart: function (id, quantity = 1) { // 傳入選取的產品id，quantity預設值為1
+      const vm = this
+      this.loadingItem = id
+      this.isLoading = true
+      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`// 前台加入購物車的API
+      const carts = {
+        product: id,
+        quantity: quantity
+      }
+      this.$http.post(api, carts).then(function (res) {
+        vm.$bus.$emit('update-total')
+        vm.isLoading = false
+        vm.loadingItem = ''
+        console.log(res)
+      })
+        .catch(function (error) {
+          alert(error.response.data.errors)
+          vm.isLoading = false
+          vm.loadingItem = ''
+        })
+    }
+
+  }
+}
+</script>
+<style lang="scss" scoped>
+.product{
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+}
+</style>

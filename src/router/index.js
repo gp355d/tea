@@ -35,6 +35,11 @@ const routes = [
         component: () => import('../views/frontend/Effect.vue')
       },
       {
+        path: 'product/:id',
+        name: 'product',
+        component: () => import('../views/frontend/Product.vue')
+      },
+      {
         path: 'shopcart',
         name: 'shopcart',
         component: () => import('../views/frontend/Shopcart.vue')
