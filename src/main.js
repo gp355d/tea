@@ -8,6 +8,10 @@ import 'bootstrap'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
 import './bus'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import swiper, { Navigation, Pagination, Autoplay } from 'swiper'
+import 'swiper/swiper-bundle.css'
+
 Vue.config.productionTip = false
 window.$ = jquery
 Vue.use(VueAxios, axios)
@@ -23,3 +27,5 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
+Vue.use(VueAwesomeSwiper)
+swiper.use([Navigation, Pagination, Autoplay])

@@ -1,9 +1,9 @@
 <template>
-<div class="d-flex justify-content-center container py-4">
-   <div class="row">
-    <div class="col-md-12">
+<div class="container py-4">
+   <div class="row justify-content-center">
+    <div class="col-md-10 mb-3">
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb bg-white font-weight-bold">
+            <ol class="breadcrumb bg-white">
               <li class="breadcrumb-item">
                 <router-link class="text-dark" to="/">首頁</router-link>
               </li>
@@ -38,23 +38,29 @@
                     </div>
             </div>
         </div>
-            </div>
     </div>
+    <div class="col-md-10">
+        <h3 class="font-weight-bold">相關茶品</h3>
+        <Relationproduct :product="tmpProducts" @update="getPeoductDetail" />
+    </div>
+   </div>
 </div>
 </template>
 <script>
+import Relationproduct from '@/components/Relationproduct.vue'
 export default {
   data () {
     return {
-      product: {
-        num: 1
-      },
       tmpProducts: {
-        imageUrl: []
+        imageUrl: [],
+        num: 1
       },
       isLoading: false,
       loadingItem: ''
     }
+  },
+  components: {
+    Relationproduct
   },
   created () {
     this.getPeoductDetail()
@@ -66,7 +72,10 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/product/${id}`// 取得前台單一產品資料API
       this.isLoading = true
       this.$http.get(api).then(function (res) {
-        vm.tmpProducts = res.data.data
+        vm.tmpProducts = {
+          ...res.data.data,
+          num: 1
+        }
         vm.isLoading = false
       })
         .catch(function (error) {
