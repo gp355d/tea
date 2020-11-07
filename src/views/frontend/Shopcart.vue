@@ -32,7 +32,7 @@
             <p class="mb-0 h4 font-weight-bold">總計</p>
             <p class="mb-0 h4 font-weight-bold">{{cartTotal | money}}</p>
           </div>
-          <router-link to="/products" class="btn btn-primary btn-block mt-4 rounded-0 py-3">確認訂單</router-link>
+          <router-link to="/order" class="btn btn-primary btn-block mt-4 rounded-0 py-3">確認訂單</router-link>
         </div>
       </div>
         <!-- <div class="row justify-content-center">
