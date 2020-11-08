@@ -5,39 +5,56 @@
               <div class="bg-white p-4">
                 <router-link to="/shopcart" class="h5 text-primary mb-5"><i class="fas fa-chevron-left mr-2"></i><span>返回購物車清單</span></router-link>
                 <h2 class="font-weight-bold">顧客資訊</h2>
-                <form>
+                <validation-observer  class="col-md-6" v-slot="{ invalid }">
+                <form @submit.prevent="submitOrder">
                     <div class="form-group mb-2">
+                      <validation-provider rules="required|email" v-slot="{ errors, classes, passed }">
                         <label for="ContactMail">* Email</label>
-                        <input type="email" class="form-control rounded-0" id="ContactMail" aria-describedby="emailHelp" placeholder="輸入Email">
+                        <input type="email" :class="classes" class="form-control rounded-0" id="ContactMail" aria-describedby="emailHelp" placeholder="輸入Email" v-model="temporders.email">
+                        <span class="invalid-feedback">{{ errors[0] }}</span>
+                        <span v-if="passed" class="valid-feedback">Email 正確</span>
+                      </validation-provider>
                     </div>
                     <div class="form-group mb-2">
+                       <validation-provider rules="required" v-slot="{ errors, classes, passed }">
                         <label for="ContactName">* 姓名</label>
-                        <input v-model="temporders.name" type="text" class="form-control rounded-0" id="ContactName" placeholder="輸入姓名">
+                        <input type="text" :class="classes" class="form-control rounded-0" id="ContactName" placeholder="輸入姓名" v-model="temporders.name">
+                        <span class="invalid-feedback">{{ errors[0] }}</span>
+                        <span v-if="passed" class="valid-feedback">姓名正確</span>
+                       </validation-provider>
                     </div>
                     <div class="form-group">
+                      <validation-provider rules="required|min:8" v-slot="{ errors, classes, passed }">
                         <label for="ContactPhone">* 電話</label>
-                        <input  v-model="temporders.tel" type="text" class="form-control rounded-0" id="ContactPhone" placeholder="輸入電話">
+                        <input type="text" :class="classes" class="form-control rounded-0" id="ContactPhone" placeholder="輸入電話" v-model="temporders.tel">
+                        <span class="invalid-feedback">{{ errors[0] }}</span>
+                        <span v-if="passed" class="valid-feedback">電話號碼正確</span>
+                      </validation-provider>
                     </div>
                     <div class="form-group">
+                      <validation-provider rules="required" v-slot="{ errors, classes, passed }">
                         <label for="Address">* 運送地址</label>
-                        <input v-model="temporders.address" name="地址" type="text" class="form-control" id="Address" placeholder="輸入地址">
-                        <span class="invalid-feedback"></span>
+                        <input name="地址" type="text" :class="classes" class="form-control" id="Address" placeholder="輸入地址" v-model="temporders.address">
+                        <span class="invalid-feedback">{{ errors[0] }}</span>
+                        <span v-if="passed" class="valid-feedback">地址正確</span>
+                      </validation-provider>
                     </div>
                     <div class="form-group">
                         <label for="Pay">* 付款方式</label>
-                        <select  class="form-control" id="Pay" name="付款方式" v-model="temporders.payment">
+                        <select class="form-control" id="Pay" name="付款方式" v-model="temporders.payment" required>
                             <option value="" selected disabled >請選擇付款方式</option>
                             <option v-for="(item,i) in payMoneyway" :key="i+1" :value="item">{{item}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="Message">留言</label>
-                        <textarea v-model="temporders.message" class="form-control" id="Message" rows="3"></textarea>
+                        <textarea class="form-control" id="Message" rows="7" v-model="temporders.message"></textarea>
                     </div>
                 <div class=" w-100 d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end">
-                    <router-link to="/checkout"  class="btn btn-primary btn-block py-3 px-7 rounded-0">送出訂單</router-link>
+                    <button type="submit" class="btn btn-primary btn-block py-3 px-7 rounded-0" :disabled="invalid">送出訂單</button>
                 </div>
                 </form>
+                </validation-observer>
              </div>
         </div>
             <div class="col-md-5">
@@ -160,6 +177,18 @@ export default {
           console.log(error.response.data.message)
           alert(error.response.data.message)
         })
+    },
+    submitOrder: function () {
+      const vm = this
+      const api = `${process.env.VUE_APP_APIPATH}/${this.apiinfo.uuid}/ec/orders`
+      if (this.coupon.enabled) {
+        this.temporders.coupon = this.coupon.code
+      }
+      this.$http.post(api, this.temporders).then(function (res) {
+        console.log(res)
+        vm.getCart()
+        vm.$router.push(`/checkout/${res.data.data.id}`)
+      })
     }
   }
 }
