@@ -180,11 +180,14 @@ export default {
     },
     submitOrder: function () {
       const vm = this
-      const api = `${process.env.VUE_APP_APIPATH}/${this.apiinfo.uuid}/ec/orders`
+      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders`
+      const order = { ...this.temporders }
+      console.log(order)
       if (this.coupon.enabled) {
-        this.temporders.coupon = this.coupon.code
+        order.coupon = this.coupon.code
       }
-      this.$http.post(api, this.temporders).then(function (res) {
+      this.$http.post(api, order).then(function (res) {
+        this.$bus.$emit('update-totall')
         console.log(res)
         vm.getCart()
         vm.$router.push(`/checkout/${res.data.data.id}`)

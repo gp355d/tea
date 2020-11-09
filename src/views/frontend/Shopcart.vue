@@ -3,52 +3,42 @@
         <!-- <button type="button" @click.prevent="removeAllCartItem">clear</button> -->
         <loading :active.sync="isLoading"></loading>
         <div class="row justify-content-center">
-        <div class="col-md-6 bg-white py-5" style="min-height: calc(100vh - 56px - 76px);">
-             <router-link class="h5 text-primary" to="/products"><i class="fas fa-chevron-left mr-2"></i><span>繼續購物</span></router-link>
-          <div class="d-flex justify-content-between">
-             <h2 class="mt-2 font-weight-bold">購物車清單</h2>
-          </div>
-          <div class="d-flex mt-4 bg-light" v-for="item in carts" :key="item.product.id+1">
-            <img :src="item.product.imageUrl[0]" alt="" style="width: 120px; height: 120px; object-fit: cover;">
-            <div class="w-100 p-3 position-relative">
-              <a href="#" @click.prevent="removeCartItem(item.product.id)" class="position-absolute" style="top: 16px; right: 16px;color:#20672d"><i class="fas fa-times"></i></a>
-              <p class="mb-0 font-weight-bold">{{item.product.title}}</p>
-              <p class="mb-1 text-muted" style="font-size: 14px;">{{item.product.content}}</p>
-              <div class="d-flex justify-content-between align-items-center w-100">
-                <div class="input-group w-50 align-items-center">
-                  <div class="input-group-prepend pr-1">
-                    <button class="btn btn-outline-primary rounded-0 border-0" type="button" @click.prevent="updateQuanity(item.product.id, item.quantity - 1)" :disabled="item.quantity === 1"> <i class="fas fa-minus"></i></button>
+          <div class="col-md-6 bg-white py-5" style="min-height: calc(100vh - 56px - 76px);" v-if="carts.length > 0">
+              <router-link class="h5 text-primary" to="/products"><i class="fas fa-chevron-left mr-2"></i><span>繼續購物</span></router-link>
+            <div class="d-flex justify-content-between">
+              <h2 class="mt-2 font-weight-bold">購物車清單</h2>
+            </div>
+            <div class="d-flex mt-4 bg-light" v-for="item in carts" :key="item.product.id+1">
+              <img :src="item.product.imageUrl[0]" alt="" style="width: 120px; height: 120px; object-fit: cover;">
+              <div class="w-100 p-3 position-relative">
+                <a href="#" @click.prevent="removeCartItem(item.product.id)" class="position-absolute" style="top: 16px; right: 16px;color:#20672d"><i class="fas fa-times"></i></a>
+                <p class="mb-0 font-weight-bold">{{item.product.title}}</p>
+                <p class="mb-1 text-muted" style="font-size: 14px;">{{item.product.content}}</p>
+                <div class="d-flex justify-content-between align-items-center w-100">
+                  <div class="input-group w-50 align-items-center">
+                    <div class="input-group-prepend pr-1">
+                      <button class="btn btn-outline-primary rounded-0 border-0" type="button" @click.prevent="updateQuanity(item.product.id, item.quantity - 1)" :disabled="item.quantity === 1"> <i class="fas fa-minus"></i></button>
+                    </div>
+                    <input  min="1" :value="item.quantity" @change="updateQuanity(item.product.id, item.quantity)" disabled type="number" class="form-control border-0 text-center my-auto shadow-none bg-light px-0" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    <div class="input-group-append pl-1">
+                      <button class="btn btn-outline-primary rounded-0 border-0" type="button"><i class="fas fa-plus"  @click.prevent="updateQuanity(item.product.id, item.quantity + 1)"></i></button>
+                    </div>
                   </div>
-                  <input  min="1" :value="item.quantity" @change="updateQuanity(item.product.id, item.quantity)" disabled type="number" class="form-control border-0 text-center my-auto shadow-none bg-light px-0" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                  <div class="input-group-append pl-1">
-                    <button class="btn btn-outline-primary rounded-0 border-0" type="button"><i class="fas fa-plus"  @click.prevent="updateQuanity(item.product.id, item.quantity + 1)"></i></button>
-                  </div>
+                  <p class="mb-0 ml-auto">{{item.product.price | money}}/{{item.product.unit}}</p>
                 </div>
-                <p class="mb-0 ml-auto">{{item.product.price | money}}/{{item.product.unit}}</p>
               </div>
             </div>
+            <div class="d-flex justify-content-between mt-4">
+              <p class="mb-0 h4 font-weight-bold">總計</p>
+              <p class="mb-0 h4 font-weight-bold">{{cartTotal | money}}</p>
+            </div>
+            <router-link to="/order" class="btn btn-primary btn-block mt-4 rounded-0 py-3">確認訂單</router-link>
           </div>
-          <div class="d-flex justify-content-between mt-4">
-            <p class="mb-0 h4 font-weight-bold">總計</p>
-            <p class="mb-0 h4 font-weight-bold">{{cartTotal | money}}</p>
-          </div>
-          <router-link to="/order" class="btn btn-primary btn-block mt-4 rounded-0 py-3">確認訂單</router-link>
+          <div class="col-md-6 bg-white py-5" style="min-height: calc(100vh - 56px - 76px);" v-else>
+             <router-link class="h5 text-primary" to="/products"><i class="fas fa-chevron-left mr-2"></i><span>繼續購物</span></router-link>
+             <h2 class="mt-2 font-weight-bold">目前購物車無商品，快去逛逛</h2>
         </div>
       </div>
-        <!-- <div class="row justify-content-center">
-            <div class="col-md-6">
-                <h2 class="text-left font-weight-bold">購物車清單</h2>
-                <div v-for="item in carts" :key="item.product.id+1">
-                    <div class="d-flex">
-                       <div class="rounded-0 mr-2" style="width:130px;height:120px;background-size: cover;background-position: center"  :style="{backgroundImage: `url(${item.product.imageUrl[0]})`}"></div>
-                       <div class="list text-left">
-                           <p>{{item.product.title}}</p>
-                           <p>{{item.product.content}}</p>
-                       </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
 </template>
 <script>
