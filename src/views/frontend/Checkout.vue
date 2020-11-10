@@ -4,7 +4,7 @@
         <div class="row">
           <div class="col-md-6">
             <h2 class="font-weight-bold">訂單成立</h2>
-            <p>感謝您，訂購本公司茶品，收到訂單後，預計1~2天出貨，請您耐心等候</p>
+            <p>感謝您訂購本公司茶品，收到訂單後，預計1~2天出貨，請您耐心等候</p>
             <div class="checkout-img"></div>
             <a class="h5 btn text-primary" @click.prevent="backtoHome" ><i class="fas fa-chevron-left mr-2"></i><span>回到首頁</span></a>
           </div>
@@ -20,7 +20,7 @@
                       <img :src="product.product.imageUrl[0]"  alt="" class="mr-2" style="width: 60px; height: 60px; object-fit: cover">
                       <div class="w-100 d-flex flex-column">
                         <div class="d-flex justify-content-between font-weight-bold">
-                          <h5>{{ product.product.title }}</h5>
+                          <h5 class="font-weight-bold">{{ product.product.title }}</h5>
                           <p class="mb-0">X{{ product.quantity }}</p>
                         </div>
                         <div class="d-flex justify-content-between mt-auto">
@@ -53,7 +53,7 @@
                       <span class="text-success" v-if="order.paid">付款完成</span>
                       <span class="text-danger" v-else>尚未付款</span>
                     </div>
-                    <div class="d-flex justify-content-end font-weight-bold">
+                    <div class="d-flex justify-content-end font-weight-bold"  v-if="order.paid === false">
                       <button class="btn btn-outline-primary" @click.prevent="payMoney"  :disabled="order.paid === true">
                         <i class="fas fa-spinner fa-spin"
                          v-if="loadingItem">
@@ -70,6 +70,7 @@
 </template>
 <script>
 // "zzlFDkOVw8zrpNox0kCFvkGxBF380x380xDvDMoSQLBHfetB3ZnvVRMtJSPI14Yz"
+import Toast from '@/swal'
 export default {
   data () {
     return {
@@ -93,11 +94,15 @@ export default {
       const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders/${this.orderId}`
       this.isLoading = true
-      this.$http.get(api).then((res) => {
+      this.$http.get(api).then(function (res) {
         vm.order = res.data.data
         vm.isLoading = false
       })
-        .catch(() => {
+        .catch(function () {
+          Toast.fire({
+            title: '無法取得資料，稍後再試',
+            icon: 'error'
+          })
           vm.isLoading = false
         })
     },
@@ -105,22 +110,31 @@ export default {
       const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders/${this.orderId}/paying`
       this.loadingItem = true
-      this.$http.post(api).then((res) => {
+      this.$http.post(api).then(function (res) {
         if (res.data.data.paid) {
           vm.getOrder()
-          alert('完成付款')
+          Toast.fire({
+            title: '完成付款',
+            icon: 'success'
+          })
         }
         vm.loadingItem = false
       })
-        .catch(() => {
+        .catch(function () {
+          Toast.fire({
+            title: '付款失敗，稍後再試',
+            icon: 'error'
+          })
           vm.loadingItem = false
-          alert('付款失敗，稍後再試')
         })
     },
     backtoHome: function () {
       console.log(!this.order.paid)
       if (!this.order.paid) {
-        alert('您尚未付款喔!')
+        Toast.fire({
+          title: '您尚未付款喔!',
+          icon: 'warning'
+        })
       }
       this.$router.push('/')
     }

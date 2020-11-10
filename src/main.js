@@ -14,7 +14,7 @@ import 'swiper/swiper-bundle.css'
 import { ValidationObserver, ValidationProvider, configure, localize, extend } from 'vee-validate' // 驗證套件
 import * as rules from 'vee-validate/dist/rules' // 驗證規則檔案
 import zhTW from 'vee-validate/dist/locale/zh_TW.json' // 語系檔案
-
+import './swal'
 Vue.config.productionTip = false
 window.$ = jquery
 Vue.use(VueAxios, axios)

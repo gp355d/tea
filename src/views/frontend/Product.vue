@@ -26,12 +26,12 @@
                    {{tmpProducts.price | money}} / {{tmpProducts.unit}}
                 </h5>
                     <div class="d-flex">
-                            <select name="unit" class="form-control mr-3"> v-model="product.num">
+                            <select name="unit" class="form-control mr-3" v-model="tmpProducts.num">
                                 <option :value="num" v-for="num in 5" :key="num">
                                     {{ num }} {{ tmpProducts.unit }}
                                 </option>
                             </select>
-                            <button type="button" class="btn btn-block btn-primary" @click.prevent="addToCart(tmpProducts.id, product.num)">
+                            <button type="button" class="btn btn-block btn-primary" @click.prevent="addToCart(tmpProducts.id, tmpProducts.num)">
                                 <i class="fas fa-spinner fa-spin" v-if="tmpProducts.id === loadingItem"></i>
                                 加到購物車
                             </button>
@@ -48,6 +48,7 @@
 </template>
 <script>
 import Relationproduct from '@/components/Relationproduct.vue'
+import Toast from '@/swal'
 export default {
   data () {
     return {
@@ -76,11 +77,16 @@ export default {
           ...res.data.data,
           num: 1
         }
+
         vm.isLoading = false
       })
         .catch(function (error) {
           console.log(error)
           vm.isLoading = false
+          Toast.fire({
+            title: '無法取得資料，稍後再試',
+            icon: 'error'
+          })
         })
     },
     addToCart: function (id, quantity = 1) { // 傳入選取的產品id，quantity預設值為1
@@ -96,12 +102,23 @@ export default {
         vm.$bus.$emit('update-total')
         vm.isLoading = false
         vm.loadingItem = ''
+        Toast.fire({
+          title: '該商品已加入購物車',
+          icon: 'success'
+        })
         console.log(res)
       })
         .catch(function (error) {
-          alert(error.response.data.errors)
+          // alert(error.response.data.errors)
           vm.isLoading = false
           vm.loadingItem = ''
+          const errorinfo = error.response.data.errors
+          if (errorinfo) {
+            Toast.fire({
+              title: `${errorinfo}`,
+              icon: 'warning'
+            })
+          }
         })
     }
 

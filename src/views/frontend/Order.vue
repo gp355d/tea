@@ -1,11 +1,13 @@
 <template>
     <div class="container">
+      <loading :active.sync="isLoading"></loading>
         <div class="row justify-content-center flex-md-row flex-column-reverse">
             <div class="col-md-7">
               <div class="bg-white p-4">
-                <router-link to="/shopcart" class="h5 text-primary mb-5"><i class="fas fa-chevron-left mr-2"></i><span>返回購物車清單</span></router-link>
+                <router-link to="/shopcart" class="h5 text-primary"><i class="fas fa-chevron-left mr-2"></i><span>返回購物車清單</span></router-link>
                 <h2 class="font-weight-bold">顧客資訊</h2>
-                <validation-observer  class="col-md-6" v-slot="{ invalid }">
+                <validation-observer v-slot="{ invalid }">
+                <div class="col-md-12">
                 <form @submit.prevent="submitOrder">
                     <div class="form-group mb-2">
                       <validation-provider rules="required|email" v-slot="{ errors, classes, passed }">
@@ -51,9 +53,12 @@
                         <textarea class="form-control" id="Message" rows="7" v-model="temporders.message"></textarea>
                     </div>
                 <div class=" w-100 d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end">
-                    <button type="submit" class="btn btn-primary btn-block py-3 px-7 rounded-0" :disabled="invalid">送出訂單</button>
+                    <button type="submit" class="btn btn-primary btn-block py-3 px-7 rounded-0" :disabled="invalid"><i class="fas fa-spinner fa-spin"
+                       v-if="loadingItem">
+                    </i>送出訂單</button>
                 </div>
                 </form>
+                </div>
                 </validation-observer>
              </div>
         </div>
@@ -90,7 +95,7 @@
                       <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼" />
                       <div class="input-group-append">
                         <button class="btn btn-outline-primary" type="button" @click.prevent="addCouponCode" :disabled="loadingItem">
-                          套用優惠碼
+                          <i class="fas fa-spinner fa-spin" v-if="loadingItem"></i>套用優惠碼
                         </button>
                       </div>
                     </div>
@@ -109,6 +114,7 @@
     </div>
 </template>
 <script>
+import Toast from '@/swal'
 export default {
   data () {
     return {
@@ -147,8 +153,11 @@ export default {
         vm.carts = res.data.data
         vm.updateTotall()// 取得購物車後，再更新購物車商品總價
       })
-        .catch(function (error) {
-          console.log(error.response)
+        .catch(function () {
+          Toast.fire({
+            title: '無法取得資料，稍後再試',
+            icon: 'error'
+          })
           vm.isLoading = false
         })
     },
@@ -171,11 +180,30 @@ export default {
         vm.getCart()
         vm.loadingItem = false
         vm.coupon = res.data.data
-        alert('優惠卷已加入')
+        Toast.fire({
+          title: '優惠卷已套用',
+          icon: 'success'
+        })
       })
         .catch(function (error) {
           console.log(error.response.data.message)
-          alert(error.response.data.message)
+          // alert(error.response.data.message)
+          const errorinfo = error.response.data.errors
+          if (errorinfo) {
+            errorinfo.code.forEach((errmsg) => {
+              Toast.fire({
+                title: `${errmsg}`,
+                icon: 'error'
+              })
+            })
+          } else {
+            const { message } = error.response.data
+            Toast.fire({
+              title: `${message}`,
+              icon: 'error'
+            })
+            vm.loadingItem = false
+          }
         })
     },
     submitOrder: function () {
@@ -187,11 +215,22 @@ export default {
         order.coupon = this.coupon.code
       }
       this.$http.post(api, order).then(function (res) {
-        this.$bus.$emit('update-totall')
-        console.log(res)
+        vm.$bus.$emit('update-total')
+        // console.log(res)
+        Toast.fire({
+          text: '訂單已送出',
+          icon: 'success'
+        })
         vm.getCart()
         vm.$router.push(`/checkout/${res.data.data.id}`)
       })
+        .catch(function () {
+          Toast.fire({
+            text: '訂單已送出失敗，稍後在試',
+            icon: 'error'
+          })
+          vm.loadingItem = false
+        })
     }
   }
 }

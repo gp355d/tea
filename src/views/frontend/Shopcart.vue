@@ -3,11 +3,9 @@
         <!-- <button type="button" @click.prevent="removeAllCartItem">clear</button> -->
         <loading :active.sync="isLoading"></loading>
         <div class="row justify-content-center">
-          <div class="col-md-6 bg-white py-5" style="min-height: calc(100vh - 56px - 76px);" v-if="carts.length > 0">
+          <div class="col-md-6 bg-white py-5 shadow" style="min-height: calc(100vh - 56px - 76px);" v-if="carts.length > 0">
               <router-link class="h5 text-primary" to="/products"><i class="fas fa-chevron-left mr-2"></i><span>繼續購物</span></router-link>
-            <div class="d-flex justify-content-between">
-              <h2 class="mt-2 font-weight-bold">購物車清單</h2>
-            </div>
+              <h2 class="font-weight-bold">購物車清單</h2>
             <div class="d-flex mt-4 bg-light" v-for="item in carts" :key="item.product.id+1">
               <img :src="item.product.imageUrl[0]" alt="" style="width: 120px; height: 120px; object-fit: cover;">
               <div class="w-100 p-3 position-relative">
@@ -56,6 +54,7 @@ export default {
   methods: {
     getCart: function () {
       const vm = this
+      this.isLoading = true
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`
       this.$http.get(api).then(function (res) {
         vm.carts = res.data.data

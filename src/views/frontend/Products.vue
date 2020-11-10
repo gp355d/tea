@@ -49,6 +49,7 @@
 </div>
 </template>
 <script>
+import Toast from '@/swal'
 export default {
   data () {
     return {
@@ -76,8 +77,11 @@ export default {
           vm.filtercategory = categoryName
         }
       })
-        .catch(function (error) {
-          console.log(error)
+        .catch(function () {
+          Toast.fire({
+            title: '無法取得資料，稍後再試',
+            icon: 'error'
+          })
         })
     },
     addToCart: function (id, quantity = 1) {
@@ -90,10 +94,25 @@ export default {
         quantity: quantity
       }
       this.$http.post(api, carts).then(function (res) {
-        vm.$bus.$emit('update-total')
+        vm.$bus.$emit('update-totall')
+        Toast.fire({
+          title: '該商品已加入購物車',
+          icon: 'success'
+        })
         vm.loadingItem = ''
         vm.isLoading = false
       })
+        .catch(function (error) {
+          const errorinfo = error.response.data.errors
+          if (errorinfo) {
+            Toast.fire({
+              title: `${errorinfo}`,
+              icon: 'warning'
+            })
+          }
+          vm.loadingItem = ''
+          vm.isLoading = false
+        })
     }
   },
   computed: {
