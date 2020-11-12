@@ -94,7 +94,7 @@ export default {
         quantity: quantity
       }
       this.$http.post(api, carts).then(function (res) {
-        vm.$bus.$emit('update-totall')
+        vm.$bus.$emit('update-total')
         Toast.fire({
           title: '該商品已加入購物車',
           icon: 'success'

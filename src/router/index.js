@@ -55,6 +55,11 @@ const routes = [
         component: () => import('../views/frontend/Checkout.vue')
       }
     ]
+  },
+  {
+    path: '/signin',
+    name: 'signin',
+    component: () => import('../views/backend/Signin.vue')
   }
 
 ]
