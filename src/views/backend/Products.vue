@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-        <h2>後台產品管理</h2>
+        <h2 class="font-weight-bold">後台產品管理</h2>
         <div class="text-right mt-4">
           <button class="btn btn-primary" @click="openModal('new')">
             新增產品

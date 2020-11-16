@@ -23,7 +23,7 @@
                     <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="file-text"></span>
-              <router-link to="/admin/imgmanger">圖片儲存列表</router-link>
+              <router-link to="/admin/storages">圖片儲存列表</router-link>
             </a>
           </li>
         </ul>

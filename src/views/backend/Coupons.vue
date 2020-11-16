@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h2>優惠卷列表</h2>
+        <h2 class="font-weight-bold">優惠卷列表</h2>
         <div class="text-right mt-4">
     <button class="btn btn-primary" @click="openCouponModal('new')">
         新增優惠券
@@ -119,14 +119,20 @@
         </div>
     </div>
 </div>
+<pg :pages="pagination" @emit-pages="getCoupons"></pg>
     </div>
 </template>
 <script>
 /* global $ */
+import Pagination from '@/components/Pagination.vue'
 import Toast from '@/swal'
 export default {
+  components: {
+    pg: Pagination
+  },
   data () {
     return {
+      pagination: {},
       coupons: {}, // 存放AJAX回傳的coupon資料
       tempCoupon: { // 新增、編輯動作要傳送的物件資料
         title: '',
@@ -175,6 +181,7 @@ export default {
       this.$http.get(api)
         .then(function (res) {
           // console.log(res)
+          vm.pagination = res.data.meta.pagination
           vm.coupons = res.data.data
         })
     },

@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h2>訂單列表</h2>
+        <h2 class="font-weight-bold">訂單列表</h2>
         <table class="table mt-4">
             <thead>
                 <tr>
@@ -13,7 +13,7 @@
                 </tr>
             </thead>
             <tbody v-if="orders.length">
-                <tr v-for="(item, i) in orders" :key="i" :class="{'text-secondary': item.paid}">
+                <tr v-for="(item, i) in orders" :key="i" :class="{'text-primary': item.paid}">
                     <td>{{ item.created.datetime }}</td>
                     <td>
                       <ul class="list-unstyled">
@@ -67,6 +67,7 @@
 <script>
 /* global $ */
 import Pagination from '@/components/Pagination.vue'
+import Toast from '@/swal'
 export default {
   components: {
     pg: Pagination
@@ -89,6 +90,12 @@ export default {
         vm.orders = res.data.data
         vm.pagination = res.data.meta.pagination
       })
+        .catch(function () {
+          Toast.fire({
+            title: '無法取得資料，稍後再試',
+            icon: 'error'
+          })
+        })
     },
     setOrderPaid (item) {
       let api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/orders/${item.id}/paid` // 變更付款狀況API，已付款
@@ -109,6 +116,12 @@ export default {
         vm.userorderinfo = res.data.data.user
         $('#orderModal').modal('show')
       })
+        .catch(function () {
+          Toast.fire({
+            title: '無法取得資料，稍後再試',
+            icon: 'error'
+          })
+        })
     }
   },
   created () {
