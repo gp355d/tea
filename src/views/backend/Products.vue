@@ -3,7 +3,7 @@
         <h2>後台產品管理</h2>
         <div class="text-right mt-4">
           <button class="btn btn-primary" @click="openModal('new')">
-            建立新的產品
+            新增產品
           </button>
         </div>
         <table class="table mt-4">
