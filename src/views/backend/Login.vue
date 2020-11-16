@@ -5,8 +5,9 @@
                 <div class="loginbg"></div>
             </div>
             <div class="col-md-6 shadow">
-                <form class="form-signin" @submit.prevent="signin">
-                    <h1 class="h3 mb-3 font-weight-normal">請先登入</h1>
+              <h2 class="font-weight-bold text-center">tea 商品管理系統</h2>
+                <form class="form-signin" @submit.prevent="login">
+                    <h1 class="h3 mb-3 font-weight-normal text-center">請先登入</h1>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" id="email" placeholder="Enter email" v-model="user.email" required>
@@ -34,7 +35,7 @@ export default {
     }
   },
   methods: {
-    signin: function () {
+    login: function () {
       const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/auth/login`// 登入API
       this.$http.post(api, this.user).then((res) => {

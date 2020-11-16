@@ -57,11 +57,22 @@ const routes = [
     ]
   },
   {
-    path: '/signin',
-    name: 'signin',
-    component: () => import('../views/backend/Signin.vue')
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/backend/Login.vue')
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import('../views/backend/Dashboard.vue'),
+    children: [
+      {
+        path: 'products',
+        name: 'products',
+        component: () => import('../views/backend/Products.vue')
+      }
+    ]
   }
-
 ]
 
 const router = new VueRouter({
