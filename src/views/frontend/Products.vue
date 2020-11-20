@@ -3,7 +3,7 @@
 <div class="container py-4">
   <loading :active.sync="isLoading"></loading>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 mb-3">
             <ul class="list-group">
                 <a href="#" class="list-group-item list-group-item-action" @click.prevent="filtercategory = ''"
                     :class="{active: filtercategory === ''}">全茶品</a>
@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-9">
             <div class="row">
-                <div class="col-md-4 mb-4" v-for="item in filtercategories" :key="item.id">
+                <div class="col-lg-4 col-sm-6 mb-4" v-for="item in filtercategories" :key="item.id">
                     <div class="card rounded shadow">
                       <router-link :to="`/product/${ item.id }`">
                         <div style="height: 130px; background-size: cover; background-position:center"

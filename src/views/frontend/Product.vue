@@ -66,6 +66,9 @@ export default {
   created () {
     this.getPeoductDetail()
   },
+  mounted () {
+    window.scrollTo(0, 0)
+  },
   methods: {
     getPeoductDetail: function () {
       const vm = this

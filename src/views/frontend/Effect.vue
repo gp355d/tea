@@ -49,6 +49,18 @@
     </div>
 </div>
 </template>
+<script>
+export default {
+  data () {
+    return {
+
+    }
+  },
+  mounted () {
+    window.scrollTo(0, 0)
+  }
+}
+</script>
 <style lang="scss" scoped>
 .feature li{
     font-size: 24px;
