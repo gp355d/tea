@@ -21,7 +21,8 @@
             </div>
             <div class="col-md-6">
                 <h2 class="font-weight-bold">{{tmpProducts.title}}</h2>
-                <p>{{tmpProducts.content}}</p>
+                <p v-html="tmpProducts.content">{{tmpProducts.content}}</p>
+                <p v-html="tmpProducts.description">{{tmpProducts.description}}</p>
                 <h5 class="font-weight-bold my-4 text-right">
                    {{tmpProducts.price | money}} / {{tmpProducts.unit}}
                 </h5>

@@ -106,16 +106,16 @@
                 <hr>
 
                 <div class="form-group">
-                  <label for="description">產品說明</label>
-                  <textarea id="description" v-model="tempProduct.description" type="text" class="form-control"
-                    placeholder="請輸入產品說明" required>
-            </textarea>
+                  <label for="description">產品描述</label>
+                  <vue-editor id="description" v-model="tempProduct.description" type="text" class=""
+                    placeholder="請輸入產品描述" required>
+                  </vue-editor>
                 </div>
                 <div class="form-group">
-                  <label for="content">產品描述</label>
+                  <label for="content">產品說明</label>
                   <textarea id="content" v-model="tempProduct.content" type="text" class="form-control"
-                    placeholder="請輸入產品描述" required>
-            </textarea>
+                    placeholder="請輸入產品說明" required>
+                  </textarea>
                 </div>
                 <div class="form-group">
                   <div class="form-check">
@@ -171,9 +171,11 @@
 /* global $ */
 import Pagination from '@/components/Pagination.vue'
 import Toast from '@/swal'
+import { VueEditor } from 'vue2-editor'
 export default {
   components: {
-    pg: Pagination
+    pg: Pagination,
+    VueEditor
   },
   data () {
     return {
