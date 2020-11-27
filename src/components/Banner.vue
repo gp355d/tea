@@ -4,7 +4,7 @@
       background-position: center center;background-size: cover;opacity: 0.8"></div>
   <div class="container d-flex flex-column justify-content-end" style="min-height: 100vh;">
     <div class="slogan" style="z-index:1">
-      <div class="mb-4 font-weight-bold">
+      <div class="slogan-text mb-4 font-weight-bold">
         <h2>茶香飄逸</h2>
         <p class="h2 mb-0">悠閒時刻，品嘗茶香</p>
         <!-- <a class="btn btn-light rounded-0 mt-5">立刻去看看</a> -->
@@ -13,3 +13,6 @@
   </div>
 </div>
 </template>
+<style lang="scss" scoped>
+
+</style>

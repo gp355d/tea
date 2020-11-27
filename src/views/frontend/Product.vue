@@ -23,9 +23,9 @@
                 <h2 class="font-weight-bold">{{tmpProducts.title}}</h2>
                 <p v-html="tmpProducts.content">{{tmpProducts.content}}</p>
                 <p v-html="tmpProducts.description">{{tmpProducts.description}}</p>
-                <h5 class="font-weight-bold my-4 text-right">
-                   {{tmpProducts.price | money}} / {{tmpProducts.unit}}
-                </h5>
+                <h3 class="font-weight-bold my-4 text-right">
+                   售價<span class="text-danger">{{tmpProducts.price | money}}</span>
+                </h3>
                     <div class="d-flex">
                             <select name="unit" class="form-control mr-3" v-model="tmpProducts.num">
                                 <option :value="num" v-for="num in 5" :key="num">

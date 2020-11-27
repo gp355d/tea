@@ -8,7 +8,7 @@
                 {{ item.title }}
                 </h6>
                 <div class="text-right pr-2">
-                {{ item.price | money }} 元
+                售價<span class="text-danger font-weight-bold">{{ item.price | money }}</span>
                 </div>
            </div>
         </div>

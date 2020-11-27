@@ -2,8 +2,8 @@
 <div class="container py-4">
     <div class="row mb-2">
         <div class="col-md-8">
-            <h2 class="font-weight-bold">喝茶好處</h2>
-            <p>茶一直被視為天然的養生法寶，而茶也的確擁有許多對健康有益的營養成分。喝茶可以防癌、控制血脂、血糖，甚至預防失智
+            <h2 class="effect font-weight-bold">喝茶好處</h2>
+            <p class="effect-text">茶一直被視為天然的養生法寶，而茶也的確擁有許多對健康有益的營養成分。喝茶可以防癌、控制血脂、血糖，甚至預防失智
     ，茶葉依照「發酵程度」可以分為6大種類，分別為白茶、青茶、綠茶、紅茶、黑茶、黃茶。</p>
         </div>
         <div class="col-md-4">
@@ -62,10 +62,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.feature li{
-    font-size: 24px;
-    & p{
-        font-size: 16px;
-    }
-}
+
 </style>

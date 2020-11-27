@@ -4,7 +4,7 @@
         <div class="row">
           <div class="col-md-6">
             <h2 class="font-weight-bold">訂單成立</h2>
-            <p>感謝您訂購本公司茶品，收到訂單後，預計1~2天出貨，請您耐心等候</p>
+            <p class="mssage">感謝您訂購本公司茶品，收到訂單後，預計1~2天出貨，請您耐心等候</p>
             <div class="checkout-img"></div>
             <a class="h5 btn text-primary" @click.prevent="backtoHome" ><i class="fas fa-chevron-left mr-2"></i><span>回到首頁</span></a>
           </div>
@@ -17,7 +17,7 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item px-0" v-for="(product, i) in order.products" :key="i">
                     <div class="d-flex mt-2">
-                      <img :src="product.product.imageUrl[0]"  alt="" class="mr-2" style="width: 60px; height: 60px; object-fit: cover">
+                      <img :src="product.product.imageUrl[0]"  alt="" class="img-fluid mr-2" style="width: 60px; height: 60px; object-fit: cover">
                       <div class="w-100 d-flex flex-column">
                         <div class="d-flex justify-content-between font-weight-bold">
                           <h5 class="font-weight-bold">{{ product.product.title }}</h5>
@@ -25,7 +25,7 @@
                         </div>
                         <div class="d-flex justify-content-between mt-auto">
                           <p class="text-muted mb-0"><small>{{ product.product.price | money}}/{{ product.product.unit }}</small></p>
-                          <p class="mb-0">{{ product.product.price | money}}</p>
+                          <p class="mb-0 price">{{ product.product.price | money}}</p>
                         </div>
                       </div>
                     </div>
@@ -33,7 +33,7 @@
 
                   <li class="list-group-item px-0 pb-0">
                     <table class="table text-muted">
-                      <tbody>
+                      <tbody class="info">
                         <tr>
                           <th scope="row" class="border-0 px-0 font-weight-normal">小計</th>
                           <td class="text-right border-0 px-0">{{ order.amount | money }}</td>
@@ -46,7 +46,7 @@
                     </table>
                     <div class="d-flex justify-content-between mt-2 mb-2">
                       <p class="mb-0 h4 font-weight-bold">總計</p>
-                      <p class="mb-0 h4 font-weight-bold">{{ order.amount | money }}</p>
+                      <p class="mb-0 h4 font-weight-bold text-danger">{{ order.amount | money }}</p>
                     </div>
                     <div class="d-flex justify-content-between font-weight-bold mb-2">
                       <span>訂單狀態</span>

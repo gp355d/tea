@@ -63,7 +63,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../../assets/all.scss';
+// @import '../../assets/all.scss';
 .loginbg{
     background: url('https://images.unsplash.com/photo-1531970227416-f0cddeb1f748?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
     background-size: cover;

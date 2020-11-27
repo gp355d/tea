@@ -14,23 +14,24 @@
         <div class="col-md-9">
             <div class="row">
                 <div class="col-lg-4 col-sm-6 mb-4" v-for="item in filtercategories" :key="item.id">
+                  <div class="card-deck h-100">
                     <div class="card rounded shadow">
                       <router-link :to="`/product/${ item.id }`">
                         <div style="height: 130px; background-size: cover; background-position:center"
                             :style="{backgroundImage: `url(${item.imageUrl[0]})`}"></div>
                       </router-link>
                         <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
                                 <h5 class="card-title d-inline mb-0 font-weight-bold">{{item.title}}</h5>
                                 <span class="badge badge-primary">{{item.category}}</span>
                             </div>
                             <p class="card-text" v-html="item.content">{{item.content}}</p>
                             <div class="text-right">
-                                <div class="h5" v-if="item.origin_price === item.price">原價{{item.origin_price | money}}元
+                                <div class="h5" v-if="item.origin_price === item.price">原價{{item.origin_price | money}}
                                 </div>
                                 <div class="" v-else>
-                                    <del class="h6">原價{{item.origin_price | money}}元</del>
-                                    <div class="h5 text-danger font-weight-bold">現在只要{{item.price | money}}元</div>
+                                    <del class="h6">原價{{item.origin_price | money}}</del>
+                                    <div class="h5 text-danger font-weight-bold">現在只要{{item.price | money}}</div>
                                 </div>
                             </div>
                         </div>
@@ -42,6 +43,7 @@
                            </button>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

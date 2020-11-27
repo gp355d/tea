@@ -4,8 +4,8 @@
         <div class="container-fluid">
           <div class="row">
           <Sidebar/>
-                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-2">
-      <router-view :token="token" v-if="isAuth"></router-view>
+                <main role="main" class="col-md-10 ml-sm-auto col-lg-10 pt-2">
+                    <router-view :token="token" v-if="isAuth"></router-view>
                 </main>
             </div>
           </div>
@@ -48,6 +48,6 @@ export default {
 
 </script>
 <style lang="scss">
-@import '../../assets/all.scss';
+// @import '../../assets/all.scss';
 @import '../../assets/dashboard.scss';
 </style>

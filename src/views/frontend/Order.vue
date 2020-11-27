@@ -11,7 +11,7 @@
                 <form @submit.prevent="submitOrder">
                     <div class="form-group mb-2">
                       <validation-provider rules="required|email" v-slot="{ errors, classes, passed }">
-                        <label for="ContactMail">* Email</label>
+                        <label for="ContactMail"><span class="text-danger">*</span> Email</label>
                         <input type="email" :class="classes" class="form-control rounded-0" id="ContactMail" aria-describedby="emailHelp" placeholder="輸入Email" v-model="temporders.email">
                         <span class="invalid-feedback">{{ errors[0] }}</span>
                         <span v-if="passed" class="valid-feedback">Email 正確</span>
@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-group mb-2">
                        <validation-provider rules="required" v-slot="{ errors, classes, passed }">
-                        <label for="ContactName">* 姓名</label>
+                        <label for="ContactName"><span class="text-danger">*</span> 姓名</label>
                         <input type="text" :class="classes" class="form-control rounded-0" id="ContactName" placeholder="輸入姓名" v-model="temporders.name">
                         <span class="invalid-feedback">{{ errors[0] }}</span>
                         <span v-if="passed" class="valid-feedback">姓名正確</span>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="form-group">
                       <validation-provider rules="required|min:8" v-slot="{ errors, classes, passed }">
-                        <label for="ContactPhone">* 電話</label>
+                        <label for="ContactPhone"><span class="text-danger">*</span> 電話</label>
                         <input type="text" :class="classes" class="form-control rounded-0" id="ContactPhone" placeholder="輸入電話" v-model="temporders.tel">
                         <span class="invalid-feedback">{{ errors[0] }}</span>
                         <span v-if="passed" class="valid-feedback">電話號碼正確</span>
@@ -35,14 +35,14 @@
                     </div>
                     <div class="form-group">
                       <validation-provider rules="required" v-slot="{ errors, classes, passed }">
-                        <label for="Address">* 運送地址</label>
+                        <label for="Address"><span class="text-danger">*</span> 運送地址</label>
                         <input name="地址" type="text" :class="classes" class="form-control" id="Address" placeholder="輸入地址" v-model="temporders.address">
                         <span class="invalid-feedback">{{ errors[0] }}</span>
                         <span v-if="passed" class="valid-feedback">地址正確</span>
                       </validation-provider>
                     </div>
                     <div class="form-group">
-                        <label for="Pay">* 付款方式</label>
+                        <label for="Pay"><span class="text-danger">*</span> 付款方式</label>
                         <select class="form-control" id="Pay" name="付款方式" v-model="temporders.payment" required>
                             <option value="" selected disabled >請選擇付款方式</option>
                             <option v-for="(item,i) in payMoneyway" :key="i+1" :value="item">{{item}}</option>
@@ -105,8 +105,8 @@
               </table>
               <div class="d-flex justify-content-between mt-4">
                 <p class="mb-0 h4 font-weight-bold">總計</p>
-                <p  v-if="coupon.enabled" class="mb-0 h4 font-weight-bold">{{ cartTotal * (coupon.percent / 100) | money }}</p>
-                <p v-else class="mb-0 h4 font-weight-bold">{{ cartTotal | money }}</p>
+                <p  v-if="coupon.enabled" class="mb-0 h4 font-weight-bold text-danger">{{ cartTotal * (coupon.percent / 100) | money }}</p>
+                <p v-else class="mb-0 h4 font-weight-bold text-danger">{{ cartTotal | money }}</p>
               </div>
             </div>
             </div>
@@ -196,6 +196,7 @@ export default {
                 icon: 'error'
               })
             })
+            vm.loadingItem = false
           } else {
             const { message } = error.response.data
             Toast.fire({
