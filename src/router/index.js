@@ -87,6 +87,11 @@ const routes = [
         component: () => import('../views/backend/Storages.vue')
       }
     ]
+  },
+  {
+    path: '*',
+    name: 'notfound',
+    component: () => import('../views/Notfound.vue')
   }
 ]
 
