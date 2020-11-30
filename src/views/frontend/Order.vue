@@ -1,7 +1,7 @@
 <template>
     <div class="container">
       <loading :active.sync="isLoading"></loading>
-        <div class="row justify-content-center flex-md-row flex-column-reverse">
+        <div class="row justify-content-center flex-md-row flex-column-reverse"  v-if="carts.length > 0">
             <div class="col-md-7">
               <div class="bg-white p-4">
                 <router-link to="/shopcart" class="h5 text-primary"><i class="fas fa-chevron-left mr-2"></i><span>返回購物車清單</span></router-link>
@@ -66,19 +66,19 @@
                 <div class="border p-4 mb-4">
                     <h3 class="font-weight-bold mb-4">訂單明細</h3>
               <div class="d-flex mb-3" v-for="item in carts" :key="item.product.id+1">
-                <img :src="item.product.imageUrl[0]" alt="" class="mr-2" style="width: 48px; height: 48px; object-fit: cover">
+                <img :src="item.product.imageUrl[0]" alt="product-img" class="product-img mr-2">
                 <div class="w-100">
                   <div class="d-flex justify-content-between font-weight-bold">
-                    <p class="mb-0">{{item.product.title}}</p>
-                    <p class="mb-0">X{{item.quantity}}</p>
+                    <p class="product-text mb-0">{{item.product.title}}</p>
+                    <p class="product-quantity mb-0">X{{item.quantity}}</p>
                   </div>
                   <div class="d-flex justify-content-between">
-                    <p class="text-muted mb-0"><small>{{ item.product.price | money }} / {{ item.product.unit }}</small></p>
-                    <p class="mb-0">{{item.product.price | money}}</p>
+                    <p class="text-muted mb-0"><small class="product-small-text">{{ item.product.price | money }} / {{ item.product.unit }}</small></p>
+                    <p class="product-price mb-0">{{item.product.price | money}}</p>
                   </div>
                 </div>
               </div>
-              <table class="table mt-4 border-top border-bottom text-muted">
+              <table class="pay-info table mt-4 border-top border-bottom text-muted">
                 <tbody>
                   <tr>
                     <th scope="row" class="border-0 px-0 pt-4 font-weight-normal">小計</th>
@@ -236,3 +236,7 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+@import '../../assets/main.scss';
+
+</style>

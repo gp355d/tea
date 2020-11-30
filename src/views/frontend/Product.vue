@@ -1,6 +1,7 @@
 <template>
-<div class="container py-4">
-   <div class="row justify-content-center">
+<div class="container py-4" >
+     <loading :active.sync="isLoading"></loading>
+   <div class="row justify-content-center" v-if="tmpProducts.imageUrl[0]">
     <div class="col-md-10 mb-3">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-white">
@@ -14,7 +15,6 @@
                   aria-current="page">{{ tmpProducts.title }}</li>
             </ol>
           </nav>
-    <loading :active.sync="isLoading"></loading>
         <div class="row">
             <div class="col-md-6">
                 <div class="product" :style="{backgroundImage: `url(${tmpProducts.imageUrl[0]})`}"></div>

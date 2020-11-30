@@ -129,7 +129,7 @@
             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
               取消
             </button>
-            <button type="button" class="btn btn-primary" @click="updateProduct">
+            <button type="button" class="btn btn-outline-primary" @click="updateProduct">
               確認
             </button>
           </div>
@@ -157,7 +157,7 @@
             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
               取消
             </button>
-            <button type="button" class="btn btn-danger" @click="delProduct">
+            <button type="button" class="btn btn-outline-danger" @click="delProduct">
               確認刪除
             </button>
           </div>

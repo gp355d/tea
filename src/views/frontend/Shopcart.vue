@@ -3,13 +3,13 @@
         <!-- <button type="button" @click.prevent="removeAllCartItem">clear</button> -->
         <loading :active.sync="isLoading"></loading>
         <div class="row justify-content-center">
-          <div class="col-md-8 bg-white py-5 shadow" style="min-height: calc(100vh - 58px - 76px);" v-if="carts.length > 0">
+          <div class="col-md-8 bg-white py-5 shadow shopcart-layout" v-if="carts.length > 0">
               <router-link class="h5 text-primary" to="/products"><i class="fas fa-chevron-left mr-2"></i><span>繼續購物</span></router-link>
               <h2 class="font-weight-bold">購物車清單</h2>
             <div class="d-flex mt-4 bg-light" v-for="item in carts" :key="item.product.id+1">
-              <img class="img-fluid" :src="item.product.imageUrl[0]" alt="" style="width: 120px; height: 120px; object-fit: cover;">
-              <div class="w-100 p-3 position-relative">
-                <a href="#" @click.prevent="removeCartItem(item.product.id)" class="position-absolute" style="top: 16px; right: 16px;color:#20672d"><i class="fas fa-times"></i></a>
+              <img class="img-fluid shopcart-img" :src="item.product.imageUrl[0]" alt="product-img">
+              <div class="w-100 p-3 shopcart-content">
+                <a href="#" @click.prevent="removeCartItem(item.product.id)" class="shopcart-remove-item"><i class="fas fa-times"></i></a>
                 <p class="mb-0 font-weight-bold">{{item.product.title}}</p>
                 <p class="mb-1 text-muted" style="font-size: 14px;">{{item.product.content}}</p>
                 <div class="d-flex justify-content-between align-items-center w-100">
@@ -127,3 +127,22 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.shopcart-layout{
+  min-height: calc(100vh - 58px - 76px);
+  .shopcart-img{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+  }
+  .shopcart-remove-item{
+    position:absolute;
+    top: 16px;
+    right: 16px;
+    color:#20672d;
+  }
+}
+.shopcart-content{
+  position:relative;
+}
+</style>

@@ -7,7 +7,7 @@
           <div class="col-md-4 mt-4"  v-for="item in newArray" :key="item.id">
             <div class="card rounded shadow h-100">
               <img class="card-img-top" :src="item.imageUrl[0]" alt="Card image cap">
-              <div class="card-body">
+              <div class="card-body intro">
                 <h4 class="card-title font-weight-bold">{{item.title}}</h4>
                 <p class="card-text" v-html="item.content">{{item.content}}</p>
               </div>
@@ -81,5 +81,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+@include media-breakpoint-down(xl) {
+.intro{
+    .card-text{
+        font-size: 1.125rem;
+    }
+  }
+}
 </style>

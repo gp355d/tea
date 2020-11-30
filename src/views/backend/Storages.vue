@@ -10,7 +10,7 @@
             </thead>
             <tbody>
                 <tr v-for="item in storages" :key="item.id">
-                    <td><img :src="item.path" alt="" class="img-fluid" width="100px"></td>
+                    <td><img :src="item.path" alt="stroage-img" class="img-fluid" width="100px"></td>
                     <td><div class="btn-group btn-group-sm">
                       <button type="button" class="btn btn-outline-danger" @click.prevent="openimgdelModel(item)">刪除</button>
                     </div>

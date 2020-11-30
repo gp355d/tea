@@ -1,6 +1,7 @@
 <template>
     <div class="container">
-<div class="mt-5 mb-7">
+      <loading :active.sync="isLoading"></loading>
+<div class="mt-5 mb-7" v-if="order.products">
         <div class="row">
           <div class="col-md-6">
             <h2 class="font-weight-bold">訂單成立</h2>
@@ -17,15 +18,15 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item px-0" v-for="(product, i) in order.products" :key="i">
                     <div class="d-flex mt-2">
-                      <img :src="product.product.imageUrl[0]"  alt="" class="img-fluid mr-2" style="width: 60px; height: 60px; object-fit: cover">
+                      <img :src="product.product.imageUrl[0]"  alt="product-img" class="product-img mr-2">
                       <div class="w-100 d-flex flex-column">
                         <div class="d-flex justify-content-between font-weight-bold">
-                          <h5 class="font-weight-bold">{{ product.product.title }}</h5>
-                          <p class="mb-0">X{{ product.quantity }}</p>
+                          <h5 class="product-text font-weight-bold">{{ product.product.title }}</h5>
+                          <p class="product-quantity mb-0">X{{ product.quantity }}</p>
                         </div>
                         <div class="d-flex justify-content-between mt-auto">
-                          <p class="text-muted mb-0"><small>{{ product.product.price | money}}/{{ product.product.unit }}</small></p>
-                          <p class="mb-0 price">{{ product.product.price | money}}</p>
+                          <p class="text-muted mb-0"><small class="product-small-text">{{ product.product.price | money}}/{{ product.product.unit }}</small></p>
+                          <p class="product-price mb-0 price">{{ product.product.price | money}}</p>
                         </div>
                       </div>
                     </div>
@@ -142,6 +143,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '../../assets/main.scss';
 .checkout-img{
 height: 50vh;
 background-size: cover;

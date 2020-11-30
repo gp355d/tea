@@ -17,7 +17,7 @@
                   <div class="card-deck h-100">
                     <div class="card rounded shadow">
                       <router-link :to="`/product/${ item.id }`">
-                        <div style="height: 130px; background-size: cover; background-position:center"
+                        <div class="product-img"
                             :style="{backgroundImage: `url(${item.imageUrl[0]})`}"></div>
                       </router-link>
                         <div class="card-body">
@@ -132,3 +132,15 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.product-img{
+  height: 130px;
+  background-size: cover;
+  background-position:center;
+}
+@include media-breakpoint-down(lg){
+.card-title{
+  font-size: 1.375rem;
+}
+}
+</style>
