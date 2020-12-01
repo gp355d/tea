@@ -44,10 +44,6 @@
   </div>
 </template>
 <style lang="scss" scoped>
-.logo-font{
-  font-family: 'Lobster', cursive;
-  font-size:2rem;
-}
 .intro-img{
   height:230px;
   background-size: cover;

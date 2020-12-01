@@ -6,7 +6,8 @@
         <div class="row">
           <div class="col-md-4 mt-4"  v-for="item in newArray" :key="item.id">
             <div class="card rounded shadow h-100">
-              <img class="card-img-top" :src="item.imageUrl[0]" alt="Card image cap">
+              <div class="product-img" :style="{backgroundImage: `url(${item.imageUrl[0]})`}"/>
+              <!-- <img class="card-img-top" :src="item.imageUrl[0]" alt="Card image cap"> -->
               <div class="card-body intro">
                 <h4 class="card-title font-weight-bold">{{item.title}}</h4>
                 <p class="card-text" v-html="item.content">{{item.content}}</p>
@@ -81,6 +82,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.product-img{
+    background-size: cover;
+    background-position:center;
+    height: 220px;
+}
 @include media-breakpoint-down(xl) {
 .intro{
     .card-text{
