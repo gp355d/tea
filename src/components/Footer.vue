@@ -1,17 +1,17 @@
 <template>
-<footer class="bg-light text-muted py-5">
+<footer class="bg-footer py-4 d-flex align-item-center">
   <div class="container">
-    <ul class="list-inline text-center">
-      <li class="list-inline-item">© Copright 2020 茶葉賣賣</li>
-      <li class="list-inline-item">
-        <a class="text-info" href="#">
-          <i class="fa fa-instagram" aria-hidden="true"></i>Instagram</a>
-      </li>
-      <li class="list-inline-item">
-        <a class="text-info" href="#">
-          <i class="fa fa-facebook-square" aria-hidden="true"></i>Facebook</a>
-      </li>
+    <ul class="list-inline text-center text-white d-flex justify-content-center align-items-center mb-0">
+      <li class="list-inline-item mr-auto">© Copyright 2020 <span class="logo-font footer-size">tea</span></li>
+      <li class="list-inline-item"><a href="#"><i aria-hidden="true" class="fab fa-instagram" style="font-size: 2em;"></i></a></li>
+      <li class="list-inline-item"><a href="#"><i aria-hidden="true" class="fab fa-facebook-square" style="font-size: 2em;"></i></a></li>
     </ul>
   </div>
 </footer>
 </template>
+<style lang="scss" scoped>
+@import '../assets/main.scss';
+.footer-size{
+  font-size: 1.5rem;
+}
+</style>

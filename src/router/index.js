@@ -33,10 +33,66 @@ const routes = [
         path: 'effect',
         name: 'effect',
         component: () => import('../views/frontend/Effect.vue')
+      },
+      {
+        path: 'product/:id',
+        name: 'product',
+        component: () => import('../views/frontend/Product.vue')
+      },
+      {
+        path: 'shopcart',
+        name: 'shopcart',
+        component: () => import('../views/frontend/Shopcart.vue')
+      },
+      {
+        path: 'order',
+        name: 'order',
+        component: () => import('../views/frontend/Order.vue')
+      },
+      {
+        path: 'checkout/:orderId',
+        name: 'checkout',
+        component: () => import('../views/frontend/Checkout.vue')
       }
     ]
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/backend/Login.vue')
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import('../views/backend/Dashboard.vue'),
+    children: [
+      {
+        path: 'products',
+        name: 'products',
+        component: () => import('../views/backend/Products.vue')
+      },
+      {
+        path: 'coupons',
+        name: 'coupons',
+        component: () => import('../views/backend/Coupons.vue')
+      },
+      {
+        path: 'orders',
+        name: 'orders',
+        component: () => import('../views/backend/Orders.vue')
+      },
+      {
+        path: 'storages',
+        name: 'storages',
+        component: () => import('../views/backend/Storages.vue')
+      }
+    ]
+  },
+  {
+    path: '*',
+    name: 'notfound',
+    component: () => import('../views/Notfound.vue')
   }
-
 ]
 
 const router = new VueRouter({

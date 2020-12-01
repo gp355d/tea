@@ -6,12 +6,14 @@
 // Color system
 
 $white:    #fff !default;
-$gray-100: #f8f9fa !default;
+// $gray-100: #f8f9fa !default;
+$gray-100: #eaebec  !default;
 $gray-200: #e9ecef !default;
 $gray-300: #dee2e6 !default;
 $gray-400: #ced4da !default;
 $gray-500: #adb5bd !default;
-$gray-600: #6c757d !default;
+// $gray-600: #6c757d !default;
+$gray-600: #4d5358 !default;
 $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
@@ -33,7 +35,8 @@ $grays: map-merge(
   $grays
 );
 
-$blue:    #007bff !default;
+// $blue:    #007bff !default;
+$blue:    #20672d !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #e83e8c !default;
@@ -43,6 +46,7 @@ $yellow:  #ffc107 !default;
 $green:   #28a745 !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
+$footercolor:#509456;
 
 $colors: () !default;
 $colors: map-merge(
@@ -72,7 +76,7 @@ $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-800 !default;
-
+$footercolor:   $footercolor;
 $theme-colors: () !default;
 $theme-colors: map-merge(
   (
@@ -83,7 +87,8 @@ $theme-colors: map-merge(
     "warning":    $warning,
     "danger":     $danger,
     "light":      $light,
-    "dark":       $dark
+    "dark":       $dark,
+    "footer": $footercolor
   ),
   $theme-colors
 );
@@ -166,17 +171,21 @@ $sizes: map-merge(
 // Settings for the `<body>` element.
 
 $body-bg:                   $white !default;
-$body-color:                $gray-900 !default;
+// $body-color:                $gray-900 !default;
+$body-color:                #000000 !default;
 
 
 // Links
 //
 // Style anchor elements.
 
-$link-color:                              theme-color("primary") !default;
+// $link-color:                              theme-color("primary") !default;
+$link-color:                              $white;
 $link-decoration:                         none !default;
 $link-hover-color:                        darken($link-color, 15%) !default;
-$link-hover-decoration:                   underline !default;
+
+// $link-hover-decoration:                   underline !default;
+$link-hover-decoration:                   none !default;
 // Darken percentage for links with `.text-*` class (e.g. `.text-success`)
 $emphasized-link-hover-darken-percentage: 15% !default;
 
@@ -274,7 +283,7 @@ $embed-responsive-aspect-ratios: join(
 // Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-sans-serif:      -apple-system, BlinkMacSystemFont,  "Segoe UI","Microsoft JhengHei",Roboto, "Helvetica Neue",'Lobster', cursive, Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
@@ -738,9 +747,11 @@ $navbar-dark-disabled-color:        rgba($white, .25) !default;
 $navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
 $navbar-dark-toggler-border-color:  rgba($white, .1) !default;
 
-$navbar-light-color:                rgba($black, .5) !default;
+// $navbar-light-color:                rgba($black, .5) !default;
+$navbar-light-color:               #fff !default;
 $navbar-light-hover-color:          rgba($black, .7) !default;
-$navbar-light-active-color:         rgba($black, .9) !default;
+// $navbar-light-active-color:         rgba($black, .9) !default;
+$navbar-light-active-color:         #fff !default;
 $navbar-light-disabled-color:       rgba($black, .3) !default;
 $navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
 $navbar-light-toggler-border-color: rgba($black, .1) !default;
@@ -796,7 +807,8 @@ $pagination-padding-y-lg:           .75rem !default;
 $pagination-padding-x-lg:           1.5rem !default;
 $pagination-line-height:            1.25 !default;
 
-$pagination-color:                  $link-color !default;
+// $pagination-color:                  $link-color !default;
+$pagination-color:                  $dark !default;
 $pagination-bg:                     $white !default;
 $pagination-border-width:           $border-width !default;
 $pagination-border-color:           $gray-300 !default;
@@ -804,7 +816,8 @@ $pagination-border-color:           $gray-300 !default;
 $pagination-focus-box-shadow:       $input-btn-focus-box-shadow !default;
 $pagination-focus-outline:          0 !default;
 
-$pagination-hover-color:            $link-hover-color !default;
+// $pagination-hover-color:            $link-hover-color !default;
+$pagination-hover-color:            $dark !default;
 $pagination-hover-bg:               $gray-200 !default;
 $pagination-hover-border-color:     $gray-300 !default;
 
