@@ -134,6 +134,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .product-img{
+  width: 100%;
   height: 130px;
   background-size: cover;
   background-position:center;

@@ -6,7 +6,6 @@
       <div class="slogan mb-4">
         <h2>茶香飄逸</h2>
         <p class="mb-0">悠閒時刻，品嘗茶香</p>
-        <!-- <a class="btn btn-light rounded-0 mt-5">立刻去看看</a> -->
       </div>
     </div>
   </div>

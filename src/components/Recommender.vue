@@ -15,28 +15,6 @@
                 <router-link class="btn btn-primary font-weight-bold" :to="`/product/${ item.id }`" >來去看看</router-link>
             </div>
           </div>
-
-          <!-- <div class="col-md-4 mt-4">
-            <div class="card rounded shadow h-100">
-              <img class="card-img-top" src="https://images.unsplash.com/photo-1517584640132-9379fc085be0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=753&q=80" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title font-weight-bold">東方美人茶</h4>
-                <p class="card-text"></p>
-              </div>
-                <router-link class="btn btn-primary font-weight-bold" to="/products" >來去看看</router-link>
-            </div>
-          </div>
-
-          <div class="col-md-4 mt-4">
-              <div class="card rounded shadow h-100">
-                <img class="card-img-top" src="https://images.unsplash.com/photo-1562534104-6b964ad63e56?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=753&q=80" alt="Card image cap">
-                <div class="card-body">
-                  <h4 class="card-title font-weight-bold">四季春</h4>
-                  <p class="card-text"></p>
-                </div>
-                  <router-link class="btn btn-primary font-weight-bold" to="/product/I1CKrEu4GNK9AZlVMbWKACcCdIW9FHFu1SwsLBZ7ngSSnG7HZReqf3TmUFypvx1Q" >來去看看</router-link>
-              </div>
-          </div> -->
         </div>
       </div>
     </div>
@@ -83,9 +61,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 .product-img{
+    width: 100%;
+    height: 220px;
     background-size: cover;
     background-position:center;
-    height: 220px;
 }
 @include media-breakpoint-down(xl) {
 .intro{

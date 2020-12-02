@@ -21,7 +21,6 @@
 
 </template>
 <style lang="scss" scoped>
-// @import "../../src/assets/all.scss";
 .content {
 background-position: center center;
 background-size: cover;

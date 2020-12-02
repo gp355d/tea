@@ -40,6 +40,7 @@
     </div>
 </template>
 <script>
+import Toast from '@/swal'
 export default {
   data () {
     return {
@@ -60,10 +61,12 @@ export default {
         vm.carts = res.data.data
         vm.updateTotal()// 取得購物車後，再更新購物車商品總價
         vm.isLoading = false
-      // console.log(res)
       })
         .catch(function (error) {
-          console.log(error.response)
+          Toast.fire({
+            title: `${error.response}`,
+            icon: 'error'
+          })
           vm.isLoading = false
         })
     },
@@ -74,7 +77,6 @@ export default {
       // 購物車商品售價壘加
         total += item.product.price * item.quantity
         vm.cartTotal = total
-        console.log(vm.cartTotal, item.product.price, item.quantity)
       })
     },
     updateQuanity: function (id, quantity) {
@@ -87,10 +89,12 @@ export default {
       }
       this.$http.patch(api, carts).then(function (res) {
         vm.getCart()// 更新購物車內的數量後，再取得購物車列表
-        console.log(res)
       })
         .catch(function (error) {
-          console.log(error.response)// this.$http
+          Toast.fire({
+            title: `${error.response}`,
+            icon: 'error'
+          })
           vm.isLoading = false
         })
     },
@@ -105,7 +109,10 @@ export default {
         vm.$bus.$emit('update-total')
       })
         .catch(function (error) {
-          console.log(error.response)
+          Toast.fire({
+            title: `${error.response}`,
+            icon: 'error'
+          })
           vm.isLoading = false
         })
     },
@@ -120,7 +127,10 @@ export default {
         vm.$bus.$emit('update-total')
       })
         .catch(function (error) {
-          console.log(error.response)
+          Toast.fire({
+            title: `${error.response}`,
+            icon: 'error'
+          })
           vm.isLoading = false
         })
     }

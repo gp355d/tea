@@ -52,7 +52,7 @@
 @include media-breakpoint-down(lg){
   .intro{
     .info{
-      font-size: 1.375rem;
+      font-size: 1.25rem;
     }
   }
   .card-text{

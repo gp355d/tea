@@ -84,8 +84,7 @@ export default {
 
         vm.isLoading = false
       })
-        .catch(function (error) {
-          console.log(error)
+        .catch(function () {
           vm.isLoading = false
           Toast.fire({
             title: '無法取得資料，稍後再試',
@@ -113,7 +112,6 @@ export default {
         console.log(res)
       })
         .catch(function (error) {
-          // alert(error.response.data.errors)
           vm.isLoading = false
           vm.loadingItem = ''
           const errorinfo = error.response.data.errors

@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-md-6">
             <h2 class="font-weight-bold">訂單成立</h2>
-            <p class="mssage">感謝您訂購本公司茶品，收到訂單後，預計1~2天出貨，請您耐心等候</p>
+            <p class="message">感謝您訂購本公司茶品，收到訂單後，預計1~2天出貨，請您耐心等候</p>
             <div class="checkout-img"></div>
             <a class="h5 btn text-primary" @click.prevent="backtoHome" ><i class="fas fa-chevron-left mr-2"></i><span>回到首頁</span></a>
           </div>
@@ -70,7 +70,6 @@
     </div>
 </template>
 <script>
-// "zzlFDkOVw8zrpNox0kCFvkGxBF380x380xDvDMoSQLBHfetB3ZnvVRMtJSPI14Yz"
 import Toast from '@/swal'
 export default {
   data () {
@@ -149,5 +148,10 @@ height: 50vh;
 background-size: cover;
 background-position: center;
 background-image: url('https://images.unsplash.com/photo-1547825407-2d060104b7f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
+}
+@include media-breakpoint-down(xl){
+  .message{
+    font-size: 1.25rem;
+  }
 }
 </style>

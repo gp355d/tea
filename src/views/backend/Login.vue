@@ -49,9 +49,7 @@ export default {
         })
         vm.$router.push('/admin')
       })
-        .catch((error) => {
-          console.log(error)
-          // alert(error.responsive)
+        .catch(() => {
           Toast.fire({
             title: '帳號密碼錯誤，請確認輸入帳號密碼是否正確',
             icon: 'error'

@@ -2,7 +2,7 @@
   <swiper ref="mySwiper" :options="swiperOptions">
     <swiper-slide class="item mb-5" v-for="item in related" :key="item.id">
         <div class="card h-100">
-            <div class="product-img" :style="{ backgroundImage: `url(${ item.imageUrl[0] })` }" @click.prevent="getDetail(item.id)"></div>
+            <div class="relateproduct-img" :style="{ backgroundImage: `url(${ item.imageUrl[0] })` }" @click.prevent="getDetail(item.id)"></div>
             <div class="card-body">
                 <h6 class="card-title">
                 {{ item.title }}
@@ -75,22 +75,17 @@ export default {
       )
     }
   }
-//   computed: {
-//     swiper () {
-//       return this.$refs.mySwiper.$swiper
-//     }
-//   },
-//   mounted () {
-//     console.log('Current Swiper instance object', this.swiper)
-//     this.swiper.slideTo(3, 1000, false)
-//   }
+
 }
 </script>
 <style lang="scss" scoped>
-.product-img {
-  min-height: 200px;
-  background-size: cover;
-  background-position: center;
-  cursor: pointer;
+@include media-breakpoint-down(xl){
+  .relateproduct-img {
+    width: 100%;
+    min-height: 200px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+  }
 }
 </style>

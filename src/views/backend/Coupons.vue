@@ -180,7 +180,7 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/coupons`
       this.$http.get(api)
         .then(function (res) {
-          // console.log(res)
+          console.log(res)
           vm.pagination = res.data.meta.pagination
           vm.coupons = res.data.data
         })
