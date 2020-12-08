@@ -36,11 +36,10 @@ export default {
     }
   },
   methods: {
-    login: function () {
+    login () {
       const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/auth/login`// 登入API
-      this.$http.post(api, this.user).then((res) => {
-        console.log(res)
+      vm.$http.post(api, vm.user).then((res) => {
         const token = res.data.token
         const expired = res.data.expired
         document.cookie = `logintoken=${token}; expires=${new Date(expired * 1000)}; path=/`// 將token的值及cookie期限存入cookie
@@ -62,7 +61,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-// @import '../../assets/all.scss';
 .loginbg{
     background: url('https://images.unsplash.com/photo-1531970227416-f0cddeb1f748?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
     background-size: cover;

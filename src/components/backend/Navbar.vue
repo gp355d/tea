@@ -27,7 +27,6 @@ export default {
   methods: {
     logout: function () {
       document.cookie = 'logintoken=; expires=; path=/'
-      console.log('token已清除')
       Toast.fire({
         title: '登出成功',
         icon: 'success'

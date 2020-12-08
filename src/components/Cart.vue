@@ -1,7 +1,7 @@
 <template>
 <div>
   <i class="fas fa-shopping-cart">
-    <span class="badge badge-pill badge-danger" style="position: relative;left: -5px;top:-8px">{{cartTotal}}</span>
+    <span class="badge badge-pill badge-danger" style="position: relative;left: -5px;top:-8px">{{ cartTotal }}</span>
   </i>
 </div>
 </template>

@@ -50,7 +50,7 @@
                 <label for="Pay"><span class="text-danger">*</span> 付款方式</label>
                 <select class="form-control" id="Pay" name="付款方式" v-model="temporders.payment" required>
                   <option value="" selected disabled>請選擇付款方式</option>
-                  <option v-for="(item,i) in payMoneyway" :key="i+1" :value="item">{{item}}</option>
+                  <option v-for="(item,i) in payMoneyway" :key="i+1" :value="item">{{ item }}</option>
                 </select>
               </div>
               <div class="form-group">
@@ -75,13 +75,13 @@
           <img :src="item.product.imageUrl[0]" alt="product-img" class="product-img mr-2">
           <div class="w-100">
             <div class="d-flex justify-content-between font-weight-bold">
-              <p class="product-text mb-0">{{item.product.title}}</p>
-              <p class="product-quantity mb-0">X{{item.quantity}}</p>
+              <p class="product-text mb-0">{{ item.product.title }}</p>
+              <p class="product-quantity mb-0">X{{ item.quantity }}</p>
             </div>
             <div class="d-flex justify-content-between">
               <p class="text-muted mb-0"><small class="product-small-text">{{ item.product.price | money }} /
                   {{ item.product.unit }}</small></p>
-              <p class="product-price mb-0">{{item.product.price | money}}</p>
+              <p class="product-price mb-0">{{ item.product.price | money }}</p>
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@
             </tr>
             <tr>
               <th scope="row" class="border-0 px-0 pt-0 pb-4 font-weight-normal">付款方式</th>
-              <td class="text-right border-0 px-0 pt-0 pb-4">{{temporders.payment}}</td>
+              <td class="text-right border-0 px-0 pt-0 pb-4">{{ temporders.payment }}</td>
             </tr>
             <tr>
               <td colspan="2" class="text-right border-0 px-0 pt-0 pb-4">
@@ -151,12 +151,11 @@ export default {
     this.getCart()
   },
   methods: {
-    getCart: function () {
+    getCart () {
       const vm = this
-      this.isLoading = true// 讀取效果設為true，即打開效果
+      vm.isLoading = true// 讀取效果設為true，即打開效果
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`// 取得購物車的API
-      this.$http.get(api).then(function (res) {
-        console.log(res)
+      vm.$http.get(api).then(function (res) {
         vm.isLoading = false
         vm.carts = res.data.data
         vm.updateTotall()// 取得購物車後，再更新購物車商品總價
@@ -169,22 +168,19 @@ export default {
           vm.isLoading = false
         })
     },
-    updateTotall: function () {
+    updateTotall () {
       const vm = this
       let total = 0
-      // 將carts的陣列依序跑迴圈
-      vm.carts.forEach(function (item) {
-      // 購物車商品售價壘加
-        total += item.product.price * item.quantity
+      vm.carts.forEach(function (item) { // 將carts的陣列依序跑迴圈
+        total += item.product.price * item.quantity // 購物車商品售價壘加
         vm.cartTotal = total
-        console.log(vm.cartTotal, item.product.price, item.quantity)
       })
     },
-    addCouponCode: function () {
+    addCouponCode () {
       const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/coupon/search`
-      this.loadingItem = true
-      this.$http.post(api, { code: this.coupon_code }).then(function (res) {
+      vm.loadingItem = true
+      vm.$http.post(api, { code: vm.coupon_code }).then(function (res) {
         vm.getCart()
         vm.loadingItem = false
         vm.coupon = res.data.data
@@ -194,8 +190,6 @@ export default {
         })
       })
         .catch(function (error) {
-          console.log(error.response.data.message)
-          // alert(error.response.data.message)
           const errorinfo = error.response.data.errors
           if (errorinfo) {
             errorinfo.code.forEach((errmsg) => {
@@ -215,17 +209,15 @@ export default {
           }
         })
     },
-    submitOrder: function () {
+    submitOrder () {
       const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders`
-      const order = { ...this.temporders }
-      console.log(order)
-      if (this.coupon.enabled) {
-        order.coupon = this.coupon.code
+      const order = { ...vm.temporders }
+      if (vm.coupon.enabled) {
+        order.coupon = vm.coupon.code
       }
-      this.$http.post(api, order).then(function (res) {
+      vm.$http.post(api, order).then(function (res) {
         vm.$bus.$emit('update-total')
-        // console.log(res)
         Toast.fire({
           text: '訂單已送出',
           icon: 'success'

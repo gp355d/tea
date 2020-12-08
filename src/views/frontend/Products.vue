@@ -20,16 +20,16 @@
               </router-link>
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                  <h5 class="card-title d-inline mb-0 font-weight-bold">{{item.title}}</h5>
-                  <span class="badge badge-primary">{{item.category}}</span>
+                  <h5 class="card-title d-inline mb-0 font-weight-bold">{{ item.title }}</h5>
+                  <span class="badge badge-primary">{{ item.category }}</span>
                 </div>
-                <p class="card-text" v-html="item.content">{{item.content}}</p>
+                <p class="card-text" v-html="item.content">{{ item.content }}</p>
                 <div class="text-right">
-                  <div class="h5" v-if="item.origin_price === item.price">原價{{item.origin_price | money}}
+                  <div class="h5" v-if="item.origin_price === item.price">原價{{ item.origin_price | money }}
                   </div>
                   <div class="" v-else>
-                    <del class="h6">原價{{item.origin_price | money}}</del>
-                    <div class="h5 text-danger font-weight-bold">現在只要{{item.price | money}}</div>
+                    <del class="h6">原價{{ item.origin_price | money }}</del>
+                    <div class="h5 text-danger font-weight-bold">現在只要{{ item.price | money }}</div>
                   </div>
                 </div>
               </div>
@@ -65,12 +65,11 @@ export default {
     this.getProducts()
   },
   methods: {
-    getProducts: function () {
-      this.isLoading = true
+    getProducts () {
       const vm = this
+      vm.isLoading = true
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/products`
-      this.$http.get(api).then(function (res) {
-        console.log(res)
+      vm.$http.get(api).then(function (res) {
         vm.products = res.data.data// 將回傳的資料存入預先定義好的products陣列
         vm.isLoading = false
         const { categoryName } = vm.$route.params
@@ -85,16 +84,16 @@ export default {
           })
         })
     },
-    addToCart: function (id, quantity = 1) {
+    addToCart (id, quantity = 1) {
       const vm = this
-      this.loadingItem = id
-      this.isLoading = true
+      vm.loadingItem = id
+      vm.isLoading = true
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`
       const carts = {
         product: id,
         quantity: quantity
       }
-      this.$http.post(api, carts).then(function (res) {
+      vm.$http.post(api, carts).then(function (res) {
         vm.$bus.$emit('update-total')
         Toast.fire({
           title: '該商品已加入購物車',

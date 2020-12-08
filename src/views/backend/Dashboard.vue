@@ -25,12 +25,12 @@ export default {
     this.checkAuth()
   },
   methods: {
-    checkAuth: function () {
+    checkAuth () {
       const vm = this
-      this.token = document.cookie.replace(/(?:(?:^|.*;\s*)logintoken\s*=\s*([^;]*).*$)|^.*$/, '$1')
-      this.$http.defaults.headers.Authorization = `Bearer ${this.token}`
+      vm.token = document.cookie.replace(/(?:(?:^|.*;\s*)logintoken\s*=\s*([^;]*).*$)|^.*$/, '$1')
+      vm.$http.defaults.headers.Authorization = `Bearer ${vm.token}`
       const api = `${process.env.VUE_APP_APIPATH}/auth/check`
-      this.$http.post(api, { api_token: this.token }).then(function (res) {
+      vm.$http.post(api, { api_token: this.token }).then(function (res) {
         if (res.data.success) {
           vm.isAuth = true
         }
@@ -48,6 +48,5 @@ export default {
 
 </script>
 <style lang="scss">
-// @import '../../assets/all.scss';
 @import '../../assets/dashboard.scss';
 </style>

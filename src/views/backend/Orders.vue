@@ -87,10 +87,10 @@ export default {
     }
   },
   methods: {
-    getOrders: function () {
+    getOrders () {
       const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/orders` // 取得訂單資料API
-      this.$http.get(api).then((res) => {
+      vm.$http.get(api).then((res) => {
         vm.orders = res.data.data
         vm.pagination = res.data.meta.pagination
       })
@@ -108,15 +108,13 @@ export default {
       }
 
       this.$http.patch(api, item.id).then((res) => {
-        console.log(res)
         this.getOrders()
       })
     },
     getdetailOrders (id) {
       const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/orders/${id}`
-      this.$http.get(api).then((res) => {
-        console.log(res)
+      vm.$http.get(api).then((res) => {
         vm.userorderinfo = res.data.data.user
         $('#orderModal').modal('show')
       })

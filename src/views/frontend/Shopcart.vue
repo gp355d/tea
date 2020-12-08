@@ -11,8 +11,8 @@
         <div class="w-100 p-3 shopcart-content">
           <a href="#" @click.prevent="removeCartItem(item.product.id)" class="shopcart-remove-item"><i
               class="fas fa-times"></i></a>
-          <p class="mb-0 font-weight-bold">{{item.product.title}}</p>
-          <p class="mb-1 text-muted" style="font-size: 14px;">{{item.product.content}}</p>
+          <p class="mb-0 font-weight-bold">{{ item.product.title }}</p>
+          <p class="mb-1 text-muted" style="font-size: 14px;">{{ item.product.content }}</p>
           <div class="d-flex justify-content-between align-items-center w-100">
             <div class="input-group w-100 align-items-center">
               <div class="input-group-prepend pr-1">
@@ -29,12 +29,12 @@
               </div>
             </div>
           </div>
-          <p class="mb-0 ml-auto text-right h3">{{item.product.price | money}}/{{item.product.unit}}</p>
+          <p class="mb-0 ml-auto text-right h3">{{ item.product.price | money }}/{{ item.product.unit }}</p>
         </div>
       </div>
       <div class="d-flex justify-content-between mt-4">
         <p class="mb-0 h4 font-weight-bold">總計</p>
-        <p class="mb-0 h4 font-weight-bold text-danger">{{cartTotal | money}}</p>
+        <p class="mb-0 h4 font-weight-bold text-danger">{{ cartTotal | money }}</p>
       </div>
       <router-link to="/order" class="btn btn-primary btn-block mt-4 rounded-0 py-3">確認訂單</router-link>
     </div>
@@ -60,11 +60,11 @@ export default {
     this.getCart()
   },
   methods: {
-    getCart: function () {
+    getCart () {
       const vm = this
-      this.isLoading = true
+      vm.isLoading = true
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`
-      this.$http.get(api).then(function (res) {
+      vm.$http.get(api).then(function (res) {
         vm.carts = res.data.data
         vm.updateTotal()// 取得購物車後，再更新購物車商品總價
         vm.isLoading = false
@@ -77,24 +77,23 @@ export default {
           vm.isLoading = false
         })
     },
-    updateTotal: function () {
+    updateTotal () {
       const vm = this
       let total = 0
-      this.carts.forEach(function (item) {
-      // 購物車商品售價壘加
-        total += item.product.price * item.quantity
+      vm.carts.forEach(function (item) {
+        total += item.product.price * item.quantity // 購物車商品售價壘加
         vm.cartTotal = total
       })
     },
-    updateQuanity: function (id, quantity) {
-      this.isLoading = true
+    updateQuanity (id, quantity) {
       const vm = this
+      vm.isLoading = true
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`
       const carts = {
         product: id,
         quantity: quantity
       }
-      this.$http.patch(api, carts).then(function (res) {
+      vm.$http.patch(api, carts).then(function (res) {
         vm.getCart()// 更新購物車內的數量後，再取得購物車列表
       })
         .catch(function (error) {
@@ -105,12 +104,11 @@ export default {
           vm.isLoading = false
         })
     },
-    removeCartItem: function (id) { // 傳入選取的產品id
+    removeCartItem (id) { // 傳入選取的產品id
       const vm = this
-      this.isLoading = true
-      // 移除購物車內單筆資料的API
-      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping/${id}`
-      this.$http.delete(api).then(function () {
+      vm.isLoading = true
+      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping/${id}` // 移除購物車內單筆資料的API
+      vm.$http.delete(api).then(function () {
         vm.isLoading = false// 讀取效果設為true，即關閉效果
         vm.getCart()// 移除購物車內單筆資料，再取得取得購物車列表
         vm.$bus.$emit('update-total')
@@ -123,12 +121,11 @@ export default {
           vm.isLoading = false
         })
     },
-    removeAllCartItem: function () {
+    removeAllCartItem () {
       const vm = this
-      this.isLoading = true// 讀取效果設為true，即打開效果
-      // 移除購物車內所有資料的API
-      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping/all/product`
-      this.$http.delete(api).then(function () {
+      vm.isLoading = true// 讀取效果設為true，即打開效果
+      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping/all/product` // 移除購物車內所有資料的API
+      vm.$http.delete(api).then(function () {
         vm.isLoading = false// 讀取效果設為true，即關閉效果
         vm.getCart()// 移除購物車內所有資料，再取得取得購物車列表
         vm.$bus.$emit('update-total')

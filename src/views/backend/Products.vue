@@ -189,10 +189,10 @@ export default {
     this.getProducts()
   },
   methods: {
-    getProducts: function (page = 1) {
+    getProducts (page = 1) {
       const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/products?page=${page}`
-      this.$http.get(api).then(function (res) {
+      vm.$http.get(api).then(function (res) {
         vm.products = res.data.data
         vm.pagination = res.data.meta.pagination
       })
@@ -203,10 +203,10 @@ export default {
           })
         })
     },
-    getProduct: function (id) {
+    getProduct (id) {
       const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product/${id}`
-      this.$http.get(api).then(function (res) {
+      vm.$http.get(api).then(function (res) {
         vm.tempProduct = res.data.data
         $('#productModal').modal('show')
       })
@@ -217,7 +217,7 @@ export default {
           })
         })
     },
-    openModal: function (isNew, item) {
+    openModal (isNew, item) {
       switch (isNew) {
         case 'new':
           this.tempProduct = {
@@ -239,41 +239,37 @@ export default {
           break
       }
     },
-    updateProduct: function () {
+    updateProduct () {
       const vm = this
-      // 新增商品API
-      var api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product`
+      var api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product`// 新增商品API
       var httpMethod = 'post'
-      // 當不是新增產品時則切換成編輯產品API
-      if (!this.isNew) {
-        api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product/${this.tempProduct.id}`
+      if (!vm.isNew) { // 當不是新增產品時則切換成編輯產品API
+        api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product/${vm.tempProduct.id}`
         httpMethod = 'patch'
       }
-      this.$http[httpMethod](api, this.tempProduct).then(function (res) {
+      vm.$http[httpMethod](api, vm.tempProduct).then(function (res) {
         $('#productModal').modal('hide') // AJAX新增成功後關閉Modal
-        console.log(res)
         Toast.fire({
           title: '編輯成功',
           icon: 'success'
         })
         vm.getProducts() // 重新取得全部產品資料
       })
-        .catch(function (error) {
-          console.log(error.response) // 若出現錯誤則顯示錯誤訊息
+        .catch(function () {
           Toast.fire({
             title: '編輯失敗',
             icon: 'error'
           })
         })
     },
-    uploadFile: function () {
+    uploadFile () {
       var vm = this
-      const uploadedFile = this.$refs.file.files[0]
+      const uploadedFile = vm.$refs.file.files[0]
       const formData = new FormData()
       formData.append('file', uploadedFile)
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/storage`
-      this.fileUploading = true
-      this.$http.post(api, formData, {
+      vm.fileUploading = true
+      vm.$http.post(api, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -290,10 +286,10 @@ export default {
         vm.fileUploading = false
       })
     },
-    delProduct: function () {
+    delProduct () {
       var vm = this
-      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product/${this.tempProduct.id}`
-      this.$http.delete(api).then(function () {
+      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product/${vm.tempProduct.id}`
+      vm.$http.delete(api).then(function () {
         $('#delProductModal').modal('hide') // 刪除成功後關閉 Modal
         vm.getProducts() // 重新取得全部資料
         Toast.fire({

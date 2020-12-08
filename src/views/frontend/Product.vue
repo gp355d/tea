@@ -19,11 +19,11 @@
           <div class="product" :style="{backgroundImage: `url(${tmpProducts.imageUrl[0]})`}"></div>
         </div>
         <div class="col-md-6">
-          <h2 class="font-weight-bold">{{tmpProducts.title}}</h2>
-          <p v-html="tmpProducts.content">{{tmpProducts.content}}</p>
-          <p v-html="tmpProducts.description">{{tmpProducts.description}}</p>
+          <h2 class="font-weight-bold">{{ tmpProducts.title }}</h2>
+          <p v-html="tmpProducts.content">{{ tmpProducts.content }}</p>
+          <p v-html="tmpProducts.description">{{ tmpProducts.description }}</p>
           <h3 class="font-weight-bold my-4 text-right">
-            售價<span class="text-danger">{{tmpProducts.price | money}}</span>
+            售價<span class="text-danger">{{ tmpProducts.price | money }}</span>
           </h3>
           <div class="d-flex">
             <select name="unit" class="form-control mr-3" v-model="tmpProducts.num">
@@ -71,12 +71,12 @@ export default {
     window.scrollTo(0, 0)
   },
   methods: {
-    getPeoductDetail: function () {
+    getPeoductDetail () {
       const vm = this
       const { id } = this.$route.params// 使用$route屬性取得id
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/product/${id}`// 取得前台單一產品資料API
-      this.isLoading = true
-      this.$http.get(api).then(function (res) {
+      vm.isLoading = true
+      vm.$http.get(api).then(function (res) {
         vm.tmpProducts = {
           ...res.data.data,
           num: 1
@@ -92,16 +92,16 @@ export default {
           })
         })
     },
-    addToCart: function (id, quantity = 1) { // 傳入選取的產品id，quantity預設值為1
+    addToCart (id, quantity = 1) { // 傳入選取的產品id，quantity預設值為1
       const vm = this
-      this.loadingItem = id
-      this.isLoading = true
+      vm.loadingItem = id
+      vm.isLoading = true
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`// 前台加入購物車的API
       const carts = {
         product: id,
         quantity: quantity
       }
-      this.$http.post(api, carts).then(function (res) {
+      vm.$http.post(api, carts).then(function (res) {
         vm.$bus.$emit('update-total')
         vm.isLoading = false
         vm.loadingItem = ''
@@ -109,7 +109,6 @@ export default {
           title: '該商品已加入購物車',
           icon: 'success'
         })
-        console.log(res)
       })
         .catch(function (error) {
           vm.isLoading = false

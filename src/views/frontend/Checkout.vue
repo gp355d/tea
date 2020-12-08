@@ -27,9 +27,9 @@
                     </div>
                     <div class="d-flex justify-content-between mt-auto">
                       <p class="text-muted mb-0"><small
-                          class="product-small-text">{{ product.product.price | money}}/{{ product.product.unit }}</small>
+                          class="product-small-text">{{ product.product.price | money }}/{{ product.product.unit }}</small>
                       </p>
-                      <p class="product-price mb-0 price">{{ product.product.price | money}}</p>
+                      <p class="product-price mb-0 price">{{ product.product.price | money }}</p>
                     </div>
                   </div>
                 </div>
@@ -43,7 +43,7 @@
                     </tr>
                     <tr>
                       <th scope="row" class="border-0 px-0 pt-0 font-weight-normal">付款方式</th>
-                      <td class="text-right border-0 px-0 pt-0">{{order.payment}}</td>
+                      <td class="text-right border-0 px-0 pt-0">{{ order.payment }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -86,16 +86,14 @@ export default {
   },
   created () {
     this.orderId = this.$route.params.orderId
-    console.log(this.orderId)
-    // this.orderId = 'mpza9GJfuzSRPW7cl0YWWfZtXLY2WXYBxzceNZrU1TjEoaMykhKuPXv01LjtLZNt'
     this.getOrder()
   },
   methods: {
-    getOrder: function () {
+    getOrder () {
       const vm = this
-      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders/${this.orderId}`
-      this.isLoading = true
-      this.$http.get(api).then(function (res) {
+      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders/${vm.orderId}`
+      vm.isLoading = true
+      vm.$http.get(api).then(function (res) {
         vm.order = res.data.data
         vm.isLoading = false
       })
@@ -107,11 +105,11 @@ export default {
           vm.isLoading = false
         })
     },
-    payMoney: function () {
+    payMoney () {
       const vm = this
-      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders/${this.orderId}/paying`
-      this.loadingItem = true
-      this.$http.post(api).then(function (res) {
+      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders/${vm.orderId}/paying`
+      vm.loadingItem = true
+      vm.$http.post(api).then(function (res) {
         if (res.data.data.paid) {
           vm.getOrder()
           Toast.fire({
@@ -129,8 +127,7 @@ export default {
           vm.loadingItem = false
         })
     },
-    backtoHome: function () {
-      console.log(!this.order.paid)
+    backtoHome () {
       if (!this.order.paid) {
         Toast.fire({
           title: '您尚未付款喔!',

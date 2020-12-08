@@ -11,7 +11,7 @@
       <router-link class="nav-item nav-link" to="/aboutus">關於我們</router-link>
       <router-link class="nav-item nav-link" to="/effect">茶的知識</router-link>
       <router-link class="nav-item nav-link" to="/shopcart">
-        <Cart />
+        <Cart/>
       </router-link>
     </div>
   </div>

@@ -150,7 +150,7 @@ export default {
   },
 
   methods: {
-    openCouponModal: function (status, item) {
+    openCouponModal (status, item) {
       this.status = status
       switch (status) {
         case 'new':
@@ -173,34 +173,31 @@ export default {
           break
       }
     },
-    getCoupons: function () {
+    getCoupons () {
       const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/coupons`
-      this.$http.get(api)
+      vm.$http.get(api)
         .then(function (res) {
-          console.log(res)
           vm.pagination = res.data.meta.pagination
           vm.coupons = res.data.data
         })
     },
-    updateCoupon: function () {
+    updateCoupon () {
       const vm = this
       let api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/coupon`
       let httpMethod = ''
       let message = ''
-      if (this.status === 'new') {
+      if (vm.status === 'new') {
         httpMethod = 'post'
         message = '新增'
       } else {
-        api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/coupon/${this.tempCoupon.id}`
+        api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/coupon/${vm.tempCoupon.id}`
         httpMethod = 'patch'
         message = '修改'
       }
-      // 針對日期做組合重新寫入到物件中
-      // 日期格式 Y-m-d H:i:s，例如：「2020-06-16 09:31:18」
-      this.tempCoupon.deadline_at = `${this.deadline} ${this.timelimit}`
-      console.log(this.tempCoupon)
-      this.$http[httpMethod](api, this.tempCoupon)
+      // 針對日期做組合重新寫入到物件中，日期格式 Y-m-d H:i:s，例如：「2020-06-16 09:31:18」
+      vm.tempCoupon.deadline_at = `${vm.deadline} ${vm.timelimit}`
+      vm.$http[httpMethod](api, vm.tempCoupon)
         .then(function (res) {
           $('#couponModal').modal('hide')
           if (res.status === 200) {
@@ -217,11 +214,11 @@ export default {
           }
         })
     },
-    deleteCoupon: function () {
+    deleteCoupon () {
       const vm = this
-      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/coupon/${this.tempCoupon.id}`
+      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/coupon/${vm.tempCoupon.id}`
       let message = ''
-      this.$http.delete(api)
+      vm.$http.delete(api)
         .then(function (res) {
           $('#delCouponModal').modal('hide')
           message = '刪除'

@@ -70,10 +70,10 @@ export default {
     this.getData()
   },
   methods: {
-    getData: function (pages = 1) {
+    getData (pages = 1) {
       const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/storage?page=${pages}` // 取得storage的檔案API
-      this.$http.get(api).then(function (res) {
+      vm.$http.get(api).then(function (res) {
         vm.storages = res.data.data
         vm.pagination = res.data.meta.pagination
       })
@@ -84,14 +84,14 @@ export default {
           })
         })
     },
-    openimgdelModel: function (item) {
+    openimgdelModel (item) {
       $('#deleteimgModal').modal('show')
       this.tempData = Object.assign({}, item)
     },
-    deleteimgData: function () {
+    deleteimgData () {
       const vm = this
-      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/storage/${this.tempData.id}` // 刪除storage的檔案API
-      this.$http.delete(api).then(function (res) {
+      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/storage/${vm.tempData.id}` // 刪除storage的檔案API
+      vm.$http.delete(api).then(function (res) {
         $('#deleteimgModal').modal('hide')
         Toast.fire({
           title: '刪除圖片成功',

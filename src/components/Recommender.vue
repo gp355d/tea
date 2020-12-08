@@ -8,8 +8,8 @@
           <div class="card rounded shadow h-100">
             <div class="product-img" :style="{backgroundImage: `url(${item.imageUrl[0]})`}" />
             <div class="card-body intro">
-              <h4 class="card-title font-weight-bold">{{item.title}}</h4>
-              <p class="card-text" v-html="item.content">{{item.content}}</p>
+              <h4 class="card-title font-weight-bold">{{ item.title }}</h4>
+              <p class="card-text" v-html="item.content">{{ item.content }}</p>
             </div>
             <router-link class="btn btn-primary font-weight-bold" :to="`/product/${ item.id }`">來去看看</router-link>
           </div>
@@ -32,11 +32,11 @@ export default {
     this.getProducts()
   },
   methods: {
-    getProducts: function () {
-      this.isLoading = true
+    getProducts () {
       const vm = this
+      vm.isLoading = true
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/products`
-      this.$http.get(api).then(function (res) {
+      vm.$http.get(api).then(function (res) {
         vm.products = res.data.data
         vm.random(3, vm.products)
       })
@@ -47,7 +47,7 @@ export default {
           })
         })
     },
-    random: function (num, arr) {
+    random (num, arr) {
       for (var index = 0; index < num; index++) {
         var n = Math.floor(Math.random() * this.products.length)
         this.newArray.push(this.products[n])

@@ -8,7 +8,6 @@
           <h2>茶葉種類</h2>
         </div>
       </router-link>
-
     </div>
     <div class="col-md-6 mb-sm-2 mb-2">
       <router-link to="/effect" class="text-dark">
