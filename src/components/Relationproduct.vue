@@ -1,20 +1,21 @@
 <template>
-  <swiper ref="mySwiper" :options="swiperOptions">
-    <swiper-slide class="item mb-5" v-for="item in related" :key="item.id">
-        <div class="card h-100">
-            <div class="relateproduct-img" :style="{ backgroundImage: `url(${ item.imageUrl[0] })` }" @click.prevent="getDetail(item.id)"></div>
-            <div class="card-body">
-                <h6 class="card-title">
-                {{ item.title }}
-                </h6>
-                <div class="text-right pr-2">
-                售價<span class="text-danger font-weight-bold">{{ item.price | money }}</span>
-                </div>
-           </div>
+<swiper ref="mySwiper" :options="swiperOptions">
+  <swiper-slide class="item mb-5" v-for="item in related" :key="item.id">
+    <div class="card h-100">
+      <div class="relateproduct-img" :style="{ backgroundImage: `url(${ item.imageUrl[0] })` }"
+        @click.prevent="getDetail(item.id)"></div>
+      <div class="card-body">
+        <h6 class="card-title">
+          {{ item.title }}
+        </h6>
+        <div class="text-right pr-2">
+          售價<span class="text-danger font-weight-bold">{{ item.price | money }}</span>
         </div>
-    </swiper-slide>
-    <div class="swiper-pagination" slot="pagination"></div>
-  </swiper>
+      </div>
+    </div>
+  </swiper-slide>
+  <div class="swiper-pagination" slot="pagination"></div>
+</swiper>
 </template>
 
 <script>

@@ -1,51 +1,54 @@
 <template>
-    <div class="container">
-        <h2 class="font-weight-bold">圖片儲存列表</h2>
-        <table class="table mt-4">
-            <thead>
-                <tr>
-                    <th>圖片縮圖</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="item in storages" :key="item.id">
-                    <td><img :src="item.path" alt="stroage-img" class="img-fluid" width="100px"></td>
-                    <td><div class="btn-group btn-group-sm">
-                      <button type="button" class="btn btn-outline-danger" @click.prevent="openimgdelModel(item)">刪除</button>
-                    </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div id="deleteimgModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="container">
+  <h2 class="font-weight-bold">圖片儲存列表</h2>
+  <table class="table mt-4">
+    <thead>
+      <tr>
+        <th>圖片縮圖</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in storages" :key="item.id">
+        <td>
+          <img :src="item.path" alt="stroage-img" class="img-fluid" width="100px">
+        </td>
+        <td>
+          <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-outline-danger" @click.prevent="openimgdelModel(item)">刪除</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div id="deleteimgModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-        <div class="modal-dialog" role="document">
-    <div class="modal-content border-0">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content border-0">
         <div class="modal-header bg-danger text-white">
-            <h5 id="exampleModalLabel" class="modal-title">
-                <span>刪除資料</span>
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+          <h5 id="exampleModalLabel" class="modal-title">
+            <span>刪除資料</span>
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         <div class="modal-body">
-            是否刪除該筆資料 (刪除後將無法恢復)。
+          是否刪除該筆資料 (刪除後將無法恢復)。
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
-                取消
-            </button>
-            <button type="button" class="btn btn-danger" @click="deleteimgData">
-                確認刪除
-            </button>
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
+            取消
+          </button>
+          <button type="button" class="btn btn-danger" @click="deleteimgData">
+            確認刪除
+          </button>
         </div>
+      </div>
     </div>
+  </div>
+  <pg :pages="pagination" @emit-pages="getData"></pg>
 </div>
-</div>
-        <pg :pages="pagination" @emit-pages="getData"></pg>
-    </div>
 </template>
 <script>
 /* global $ */

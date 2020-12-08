@@ -1,26 +1,27 @@
 <template>
-    <div class="container">
-        <div class="row py-4">
-            <div class="col-md-6">
-                <div class="loginbg"></div>
-            </div>
-            <div class="col-md-6 shadow">
-              <h2 class="font-weight-bold text-center">tea 商品管理系統</h2>
-                <form class="form-signin" @submit.prevent="login">
-                    <h1 class="h3 mb-3 font-weight-normal text-center">請先登入</h1>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter email" v-model="user.email" required>
-                    </div>
-                    <div class="form-group mb-5">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password" v-model="user.password" required>
-                    </div>
-                    <button type="submit" class="btn btn-block btn-primary">登入</button>
-                </form>
-            </div>
-        </div>
+<div class="container">
+  <div class="row py-4">
+    <div class="col-md-6">
+      <div class="loginbg"></div>
     </div>
+    <div class="col-md-6 shadow">
+      <h2 class="font-weight-bold text-center">tea 商品管理系統</h2>
+      <form class="form-signin" @submit.prevent="login">
+        <h1 class="h3 mb-3 font-weight-normal text-center">請先登入</h1>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" v-model="user.email" required>
+        </div>
+        <div class="form-group mb-5">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" v-model="user.password"
+            required>
+        </div>
+        <button type="submit" class="btn btn-block btn-primary">登入</button>
+      </form>
+    </div>
+  </div>
+</div>
 </template>
 <script>
 import Toast from '@/swal'

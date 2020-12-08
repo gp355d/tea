@@ -1,9 +1,9 @@
 <template>
 <div>
-    <Banner/>
-    <Content/>
-    <About/>
-    <Recommender/>
+  <Banner/>
+  <Content/>
+  <About/>
+  <Recommender/>
 </div>
 </template>
 
