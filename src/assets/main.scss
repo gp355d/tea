@@ -4,9 +4,9 @@
 
 @include media-breakpoint-down(xl) {
   .product-img {
+    width: 72px;
     height: 72px;
     object-fit: cover;
-    width: 72px;
   }
 
   .product-text,
