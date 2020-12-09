@@ -9,7 +9,7 @@
 </div>
 </template>
 <style lang="scss" scoped>
-.title{
-    font-size: 72px;
+.title {
+  font-size: 72px;
 }
 </style>

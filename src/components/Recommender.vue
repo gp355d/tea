@@ -59,16 +59,17 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.product-img{
-    width: 100%;
-    height: 220px;
-    background-size: cover;
-    background-position:center;
+.product-img {
+  width: 100%;
+  height: 220px;
+  background-position: center;
+  background-size: cover;
 }
+
 @include media-breakpoint-down(xl) {
-.intro{
-    .card-text{
-        font-size: 1.125rem;
+  .intro {
+    .card-text {
+      font-size: 1.125rem;
     }
   }
 }

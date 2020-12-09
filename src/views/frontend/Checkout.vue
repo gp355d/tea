@@ -140,15 +140,17 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../../assets/main.scss';
-.checkout-img{
-height: 50vh;
-background-size: cover;
-background-position: center;
-background-image: url('https://images.unsplash.com/photo-1547825407-2d060104b7f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
+@import '../../assets/main';
+
+.checkout-img {
+  height: 50vh;
+  background-position: center;
+  background-size: cover;
+  background-image: url('https://images.unsplash.com/photo-1547825407-2d060104b7f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
 }
-@include media-breakpoint-down(xl){
-  .message{
+
+@include media-breakpoint-down(xl) {
+  .message {
     font-size: 1.25rem;
   }
 }

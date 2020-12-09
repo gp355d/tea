@@ -80,12 +80,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@include media-breakpoint-down(xl){
+@include media-breakpoint-down(xl) {
   .relateproduct-img {
     width: 100%;
     min-height: 200px;
-    background-size: cover;
     background-position: center;
+    background-size: cover;
     cursor: pointer;
   }
 }

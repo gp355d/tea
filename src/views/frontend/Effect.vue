@@ -63,16 +63,17 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@include media-breakpoint-down(xl){
-    .effect-text{
-        font-size: 1.25rem;
+@include media-breakpoint-down(xl) {
+  .effect-text {
+    font-size: 1.25rem;
+  }
+
+  .feature {
+    li {
+      p {
+        font-size: 1.5rem;
+      }
     }
-    .feature{
-        li{
-            p{
-                font-size: 1.5rem;
-            }
-        }
-    }
+  }
 }
 </style>

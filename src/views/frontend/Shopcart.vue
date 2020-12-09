@@ -142,21 +142,24 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.shopcart-layout{
+.shopcart-layout {
   min-height: calc(100vh - 58px - 76px);
-  .shopcart-img{
+
+  .shopcart-img {
     width: 120px;
     height: 120px;
     object-fit: cover;
   }
-  .shopcart-remove-item{
-    position:absolute;
+
+  .shopcart-remove-item {
+    position: absolute;
     top: 16px;
     right: 16px;
-    color:#20672d;
+    color: #20672d;
   }
 }
-.shopcart-content{
-  position:relative;
+
+.shopcart-content {
+  position: relative;
 }
 </style>

@@ -131,15 +131,16 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.product-img{
+.product-img {
   width: 100%;
   height: 130px;
+  background-position: center;
   background-size: cover;
-  background-position:center;
 }
-@include media-breakpoint-down(lg){
-.card-title{
-  font-size: 1.375rem;
-}
+
+@include media-breakpoint-down(lg) {
+  .card-title {
+    font-size: 1.375rem;
+  }
 }
 </style>

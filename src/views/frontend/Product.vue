@@ -127,9 +127,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.product{
-    height: 50vh;
-    background-size: cover;
-    background-position: center;
+.product {
+  height: 50vh;
+  background-position: center;
+  background-size: cover;
 }
 </style>

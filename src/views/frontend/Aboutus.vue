@@ -13,7 +13,7 @@
         <div class="col-md-4 mt-4">
           <div class="card rounded shadow h-100">
             <div class="card-img-top intro-img"
-              style="background-image:url(https://images.unsplash.com/flagged/photo-1582360694694-1eb3d0947263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);"
+              style="background-image: url('https://images.unsplash.com/flagged/photo-1582360694694-1eb3d0947263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');"
               alt="Card image cap"></div>
             <div class="card-body">
               <h4 class="card-title font-weight-bold">精選在地茶農</h4>
@@ -24,7 +24,7 @@
         <div class="col-md-4 mt-4">
           <div class="card rounded shadow h-100">
             <div class="card-img-top intro-img"
-              style="background-image:url(https://c.pxhere.com/images/05/a1/dcb4b1760fac6a7bbc9617060c30-1586195.jpg!d);"
+              style="background-image: url('https://c.pxhere.com/images/05/a1/dcb4b1760fac6a7bbc9617060c30-1586195.jpg!d');"
               alt="Card image cap"></div>
             <div class="card-body">
               <h4 class="card-title font-weight-bold">產地直送</h4>
@@ -35,7 +35,7 @@
         <div class="col-md-4 mt-4">
           <div class="card rounded shadow h-100">
             <div class="card-img-top intro-img"
-              style="background-image:url(https://images.pexels.com/photos/1838047/pexels-photo-1838047.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);"
+              style="background-image: url('https://images.pexels.com/photos/1838047/pexels-photo-1838047.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');"
               alt="Card image cap"></div>
             <div class="card-body">
               <h4 class="card-title font-weight-bold">貨真價實</h4>
@@ -49,18 +49,20 @@
 </div>
 </template>
 <style lang="scss" scoped>
-.intro-img{
-  height:230px;
-  background-size: cover;
+.intro-img {
+  height: 230px;
   background-position: center;
+  background-size: cover;
 }
-@include media-breakpoint-down(lg){
-  .intro{
-    .info{
+
+@include media-breakpoint-down(lg) {
+  .intro {
+    .info {
       font-size: 1.25rem;
     }
   }
-  .card-text{
+
+  .card-text {
     font-size: 1.125rem;
   }
 }

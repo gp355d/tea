@@ -12,47 +12,54 @@
 </div>
 </template>
 <style lang="scss" scoped>
-.banner-bg{
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  background-image: url(https://images.unsplash.com/photo-1486240036762-6db0544d5f46?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
-  background-position: center
-  center;background-size: cover;
-  opacity: 0.8
+.banner-bg {
+  background-image: url('https://images.unsplash.com/photo-1486240036762-6db0544d5f46?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');
+  background-position: center;
+  background-size: cover;
+  bottom: 0;
+  left: 0;
+  opacity: 0.8;
+  right: 0;
+  top: 0;
 }
-.banner-layout{
+
+.banner-layout {
   min-height: 100vh;
 }
-.slogan{
-  z-index:1
+
+.slogan {
+  z-index: 1;
 }
+
 @include media-breakpoint-up(lg) {
-  .slogan{
-    h2{
-        font-size: 2.5rem;
+  .slogan {
+    h2 {
+      font-size: 2.5rem;
     }
-    p{
+
+    p {
       font-size: 2rem;
     }
   }
- }
+}
+
 @include media-breakpoint-down(md) {
-  .slogan{
-    h2{
-        font-size: 2rem;
+  .slogan {
+    h2 {
+      font-size: 2rem;
     }
-    p{
+
+    p {
       font-size: 1.75rem;
     }
   }
- }
- @include media-breakpoint-down(sm) {
-  .slogan{
-    p{
+}
+
+@include media-breakpoint-down(sm) {
+  .slogan {
+    p {
       font-size: 1.5rem;
     }
   }
- }
+}
 </style>

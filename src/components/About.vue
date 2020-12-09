@@ -13,22 +13,25 @@
 </div>
 </template>
 <style lang="scss" scoped>
-@import '../assets/main.scss';
-.about-img{
-    width: 250px;
-    height: 160px;
+@import '../assets/main';
+
+.about-img {
+  height: 160px;
+  width: 250px;
 }
+
 @include media-breakpoint-up(lg) {
-.intro{
-    .about-info{
-        font-size: 1.5rem;
+  .intro {
+    .about-info {
+      font-size: 1.5rem;
     }
   }
 }
+
 @include media-breakpoint-down(lg) {
-.intro{
-    .about-info{
-        font-size: 1.25rem;
+  .intro {
+    .about-info {
+      font-size: 1.25rem;
     }
   }
 }

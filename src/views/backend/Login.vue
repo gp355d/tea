@@ -61,10 +61,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.loginbg{
-    background: url('https://images.unsplash.com/photo-1531970227416-f0cddeb1f748?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
-    background-size: cover;
-    background-position: center center;
-    height: 50vh;
+.loginbg {
+  height: 50vh;
+  background: url('https://images.unsplash.com/photo-1531970227416-f0cddeb1f748?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
+  background-position: center center;
+  background-size: cover;
 }
 </style>

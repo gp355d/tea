@@ -29,8 +29,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../assets/main.scss';
-.logo-size{
+@import '../assets/main';
+
+.logo-size {
   font-size: 2rem;
 }
 </style>
