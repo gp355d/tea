@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="wrapper container">
   <loading :active.sync="isLoading"></loading>
   <div class="mt-5 mb-7" v-if="order.products">
     <div class="row">
@@ -7,7 +7,7 @@
         <h2 class="font-weight-bold">訂單成立</h2>
         <p class="message">感謝您訂購本公司茶品，收到訂單後，預計1~2天出貨，請您耐心等候</p>
         <div class="checkout-img"></div>
-        <a class="h5 btn text-primary" @click.prevent="backtoHome"><i
+        <a class="h5 btn text-primary back" @click.prevent="backtoHome"><i
             class="fas fa-chevron-left mr-2"></i><span>回到首頁</span></a>
       </div>
       <div class="col-md-6">

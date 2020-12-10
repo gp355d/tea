@@ -13,18 +13,18 @@
 </template>
 <style lang="scss" scoped>
 .banner-bg {
-  background-image: url('https://images.unsplash.com/photo-1486240036762-6db0544d5f46?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');
-  background-position: center;
-  background-size: cover;
+  top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
+  background-position: center;
+  background-size: cover;
   opacity: 0.8;
-  right: 0;
-  top: 0;
+  background-image: url('https://images.unsplash.com/photo-1486240036762-6db0544d5f46?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');
 }
 
 .banner-layout {
-  min-height: 100vh;
+  min-height: 50vh;
 }
 
 .slogan {

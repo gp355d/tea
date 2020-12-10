@@ -5,7 +5,7 @@
     <img class="rounded-circle about-img"
       src="https://images.unsplash.com/photo-1531877038798-51499a9eedf0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
       alt="about-img">
-    <div class="intro col-md-6">
+    <div class="intro d-flex flex-column justify-content-center col-md-6">
       <h2 class="logo-font">tea</h2>
       <p class="about-info">精選在地產優質茶葉，製作出高品質的茶，讓顧客品嘗出茶香韻味，一直是我們的堅持。</p>
     </div>
@@ -16,8 +16,8 @@
 @import '../assets/main';
 
 .about-img {
-  height: 160px;
   width: 250px;
+  height: 250px;
 }
 
 @include media-breakpoint-up(lg) {

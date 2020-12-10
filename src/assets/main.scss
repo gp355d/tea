@@ -1,5 +1,13 @@
+.wrapper {
+  min-height: calc(100vh - 83px);
+}
+
 .logo-font {
   font-family: 'Lobster', cursive;
+}
+
+.back :active {
+  font-size: 25px;
 }
 
 @include media-breakpoint-down(xl) {

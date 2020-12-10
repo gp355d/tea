@@ -5,14 +5,16 @@
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-4 mt-4" v-for="item in newArray" :key="item.id">
+          <router-link :to="`/product/${ item.id }`" target="_blank">
           <div class="card rounded shadow h-100">
             <div class="product-img" :style="{backgroundImage: `url(${item.imageUrl[0]})`}" />
             <div class="card-body intro">
               <h4 class="card-title font-weight-bold">{{ item.title }}</h4>
               <p class="card-text" v-html="item.content">{{ item.content }}</p>
             </div>
-            <router-link class="btn btn-primary font-weight-bold" :to="`/product/${ item.id }`">來去看看</router-link>
+            <a class="btn btn-primary font-weight-bold">來去看看</a>
           </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -64,10 +66,28 @@ export default {
   height: 220px;
   background-position: center;
   background-size: cover;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
 }
 
 @include media-breakpoint-down(xl) {
   .intro {
+    color: $black;
+
+    &:hover {
+      color: $blue;
+    }
+
+    &:active {
+      color: $blue;
+    }
+
     .card-text {
       font-size: 1.125rem;
     }

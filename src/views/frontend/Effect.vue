@@ -6,8 +6,8 @@
       <p class="effect-text">茶一直被視為天然的養生法寶，而茶也的確擁有許多對健康有益的營養成分。喝茶可以防癌、控制血脂、血糖，甚至預防失智
         ，茶葉依照「發酵程度」可以分為6大種類，分別為白茶、青茶、綠茶、紅茶、黑茶、黃茶。</p>
     </div>
-    <div class="col-md-4">
-      <img class="img-fluid rounded-circle"
+    <div class="col-md-4 d-flex justify-content-center">
+      <img class="img-fluid rounded-circle tea-img"
         src="https://cdn.pixabay.com/photo/2017/06/26/14/00/yellow-tea-2443920_960_720.jpg" alt="tea">
     </div>
   </div>
@@ -64,6 +64,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 @include media-breakpoint-down(xl) {
+  .tea-img {
+    width: 200px;
+    height: 200px;
+  }
+
   .effect-text {
     font-size: 1.25rem;
   }
@@ -71,7 +76,7 @@ export default {
   .feature {
     li {
       p {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
       }
     }
   }

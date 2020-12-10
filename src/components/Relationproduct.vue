@@ -87,6 +87,10 @@ export default {
     background-position: center;
     background-size: cover;
     cursor: pointer;
+
+    &:active {
+      opacity: 0.5;
+    }
   }
 }
 </style>

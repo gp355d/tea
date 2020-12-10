@@ -12,7 +12,7 @@
           <label for="email">Email</label>
           <input type="email" class="form-control" id="email" placeholder="Enter email" v-model="user.email" required>
         </div>
-        <div class="form-group mb-5">
+        <div class="form-group">
           <label for="password">Password</label>
           <input type="password" class="form-control" id="password" placeholder="Password" v-model="user.password"
             required>

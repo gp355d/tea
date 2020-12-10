@@ -1,5 +1,5 @@
 <template>
-<footer class="bg-footer py-4 d-flex align-item-center">
+<footer class="footer bg-footer py-4 d-flex align-item-center">
   <div class="container">
     <ul class="list-inline text-center text-white d-flex justify-content-center align-items-center mb-0">
       <li class="list-inline-item mr-auto">© Copyright 2020 <span class="logo-font footer-size">tea</span></li>

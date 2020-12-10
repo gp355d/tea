@@ -1,16 +1,16 @@
 <template>
-<div class="container">
+<div class="wrapper container">
   <loading :active.sync="isLoading"></loading>
-  <div class="row justify-content-center flex-md-row flex-column-reverse" v-if="carts.length > 0">
+  <div class="row justify-content-center flex-md-row flex-column-reverse mt-3" v-if="carts.length > 0">
     <div class="col-md-7">
       <div class="bg-white p-4">
-        <router-link to="/shopcart" class="h5 text-primary"><i class="fas fa-chevron-left mr-2"></i><span>返回購物車清單</span>
+        <router-link to="/shopcart" class="h5 text-primary back"><i class="fas fa-chevron-left mr-2"></i><span>返回購物車清單</span>
         </router-link>
         <h2 class="font-weight-bold">顧客資訊</h2>
         <validation-observer v-slot="{ invalid }">
           <div class="col-md-12">
             <form @submit.prevent="submitOrder">
-              <div class="form-group mb-2">
+              <div class="form-group">
                 <validation-provider rules="required|email" v-slot="{ errors, classes, passed }">
                   <label for="ContactMail"><span class="text-danger">*</span> Email</label>
                   <input type="email" :class="classes" class="form-control rounded-0" name="Email" id="ContactMail"
@@ -19,7 +19,7 @@
                   <span v-if="passed" class="valid-feedback">Email 正確</span>
                 </validation-provider>
               </div>
-              <div class="form-group mb-2">
+              <div class="form-group">
                 <validation-provider rules="required" v-slot="{ errors, classes, passed }">
                   <label for="ContactName"><span class="text-danger">*</span> 姓名</label>
                   <input type="text" :class="classes" class="form-control rounded-0" name="姓名" id="ContactName"
@@ -237,5 +237,5 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '../../assets/main.scss';
+@import '../../assets/main';
 </style>

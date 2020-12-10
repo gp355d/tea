@@ -2,7 +2,7 @@
 <div class="container py-4">
   <h2 class="font-weight-bold">關於<span>tea</span></h2>
   <div class="row">
-    <div class="intro col-md-12">
+    <div class="intro col-md-7">
       <p class="info">精選在地產優質茶葉，製作出高品質的茶，讓顧客品嘗出茶香韻味，一直是我們的堅持。</p>
     </div>
   </div>
