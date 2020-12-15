@@ -27,10 +27,6 @@ Vue.filter('money', function (num) {
   })}`
 })
 Vue.component('Loading', Loading)
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount('#app')
 Vue.use(VueAwesomeSwiper)
 Object.keys(rules).forEach((rule) => {
   extend(rule, rules[rule])
@@ -45,3 +41,7 @@ swiper.use([Navigation, Pagination, Autoplay])
 localize('tw', zhTW)
 Vue.component('ValidationObserver', ValidationObserver)
 Vue.component('ValidationProvider', ValidationProvider)
+new Vue({
+  router,
+  render: h => h(App)
+}).$mount('#app')

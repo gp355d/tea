@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <Navbar/>
-    <router-view/>
-    <Footer/>
-  </div>
+<div>
+  <Navbar/>
+  <router-view/>
+  <Footer/>
+</div>
 </template>
 
 <script>
@@ -21,7 +21,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  // @import '../../assets/all.scss';
-</style>

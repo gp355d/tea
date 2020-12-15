@@ -1,23 +1,24 @@
 <template>
 <div class="container mb-3">
-<h2 class="font-weight-bold">精選茶品</h2>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="row">
-          <div class="col-md-4 mt-4"  v-for="item in newArray" :key="item.id">
-            <div class="card rounded shadow h-100">
-              <div class="product-img" :style="{backgroundImage: `url(${item.imageUrl[0]})`}"/>
-              <!-- <img class="card-img-top" :src="item.imageUrl[0]" alt="Card image cap"> -->
-              <div class="card-body intro">
-                <h4 class="card-title font-weight-bold">{{item.title}}</h4>
-                <p class="card-text" v-html="item.content">{{item.content}}</p>
-              </div>
-                <router-link class="btn btn-primary font-weight-bold" :to="`/product/${ item.id }`" >來去看看</router-link>
+  <h2 class="font-weight-bold"><i class="fas fa-leaf mr-2 text-primary"></i>精選茶品</h2>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-4 mt-4" v-for="item in newArray" :key="item.id">
+          <router-link :to="`/product/${ item.id }`" target="_blank">
+          <div class="card rounded shadow h-100">
+            <div class="product-img" :style="{backgroundImage: `url(${item.imageUrl[0]})`}" />
+            <div class="card-body intro">
+              <h4 class="card-title font-weight-bold">{{ item.title }}</h4>
+              <p class="card-text" v-html="item.content">{{ item.content }}</p>
             </div>
+            <a class="btn btn-primary font-weight-bold">來去看看</a>
           </div>
+          </router-link>
         </div>
       </div>
     </div>
+  </div>
 </div>
 </template>
 <script>
@@ -33,11 +34,11 @@ export default {
     this.getProducts()
   },
   methods: {
-    getProducts: function () {
-      this.isLoading = true
+    getProducts () {
       const vm = this
+      vm.isLoading = true
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/products`
-      this.$http.get(api).then(function (res) {
+      vm.$http.get(api).then(function (res) {
         vm.products = res.data.data
         vm.random(3, vm.products)
       })
@@ -48,7 +49,7 @@ export default {
           })
         })
     },
-    random: function (num, arr) {
+    random (num, arr) {
       for (var index = 0; index < num; index++) {
         var n = Math.floor(Math.random() * this.products.length)
         this.newArray.push(this.products[n])
@@ -60,16 +61,35 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.product-img{
-    width: 100%;
-    height: 220px;
-    background-size: cover;
-    background-position:center;
+.product-img {
+  width: 100%;
+  height: 220px;
+  background-position: center;
+  background-size: cover;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
 }
+
 @include media-breakpoint-down(xl) {
-.intro{
-    .card-text{
-        font-size: 1.125rem;
+  .intro {
+    color: $black;
+
+    &:hover {
+      color: $blue;
+    }
+
+    &:active {
+      color: $blue;
+    }
+
+    .card-text {
+      font-size: 1.125rem;
     }
   }
 }

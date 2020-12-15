@@ -1,32 +1,37 @@
 <template>
-    <div class="container mb-3">
-        <h2 class="font-weight-bold about-title">關於tea</h2>
-                <div class="row justify-content-center">
-                    <img class="rounded-circle about-img" src="https://images.unsplash.com/photo-1531877038798-51499a9eedf0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="about-img">
-                    <div class="intro col-md-6">
-                        <h2 class="logo-font">tea</h2>
-                        <p class="about-info">精選在地產優質茶葉，製作出高品質的茶，讓顧客品嘗出茶香韻味，一直是我們的堅持。</p>
-                    </div>
-                </div>
+<div class="container mb-3">
+  <h2 class="font-weight-bold about-title"><i class="fas fa-leaf mr-2 text-primary"></i>關於tea</h2>
+  <div class="row justify-content-center">
+    <img class="rounded-circle about-img"
+      src="https://images.unsplash.com/photo-1531877038798-51499a9eedf0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+      alt="about-img">
+    <div class="intro d-flex flex-column justify-content-center col-md-6">
+      <h2 class="logo-font">tea</h2>
+      <p class="about-info">精選在地產優質茶葉，製作出高品質的茶，讓顧客品嘗出茶香韻味，一直是我們的堅持。</p>
     </div>
+  </div>
+</div>
 </template>
 <style lang="scss" scoped>
-@import '../assets/main.scss';
-.about-img{
-    width: 250px;
-    height: 160px;
+@import '../assets/scss/frontend/main';
+
+.about-img {
+  width: 250px;
+  height: 250px;
 }
+
 @include media-breakpoint-up(lg) {
-.intro{
-    .about-info{
-        font-size: 1.5rem;
+  .intro {
+    .about-info {
+      font-size: 1.5rem;
     }
   }
 }
+
 @include media-breakpoint-down(lg) {
-.intro{
-    .about-info{
-        font-size: 1.25rem;
+  .intro {
+    .about-info {
+      font-size: 1.25rem;
     }
   }
 }

@@ -1,20 +1,21 @@
 <template>
-  <swiper ref="mySwiper" :options="swiperOptions">
-    <swiper-slide class="item mb-5" v-for="item in related" :key="item.id">
-        <div class="card h-100">
-            <div class="relateproduct-img" :style="{ backgroundImage: `url(${ item.imageUrl[0] })` }" @click.prevent="getDetail(item.id)"></div>
-            <div class="card-body">
-                <h6 class="card-title">
-                {{ item.title }}
-                </h6>
-                <div class="text-right pr-2">
-                售價<span class="text-danger font-weight-bold">{{ item.price | money }}</span>
-                </div>
-           </div>
+<swiper ref="mySwiper" :options="swiperOptions">
+  <swiper-slide class="item mb-5" v-for="item in related" :key="item.id">
+    <div class="card h-100">
+      <div class="relateproduct-img" :style="{ backgroundImage: `url(${ item.imageUrl[0] })` }"
+        @click.prevent="getDetail(item.id)"></div>
+      <div class="card-body">
+        <h6 class="card-title">
+          {{ item.title }}
+        </h6>
+        <div class="text-right pr-2">
+          售價<span class="text-danger font-weight-bold">{{ item.price | money }}</span>
         </div>
-    </swiper-slide>
-    <div class="swiper-pagination" slot="pagination"></div>
-  </swiper>
+      </div>
+    </div>
+  </swiper-slide>
+  <div class="swiper-pagination" slot="pagination"></div>
+</swiper>
 </template>
 
 <script>
@@ -79,13 +80,17 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@include media-breakpoint-down(xl){
+@include media-breakpoint-down(xl) {
   .relateproduct-img {
     width: 100%;
     min-height: 200px;
-    background-size: cover;
     background-position: center;
+    background-size: cover;
     cursor: pointer;
+
+    &:active {
+      opacity: 0.5;
+    }
   }
 }
 </style>

@@ -1,15 +1,15 @@
 <template>
-    <div>
-        <Navbar/>
-        <div class="container-fluid">
-          <div class="row">
-          <Sidebar/>
-                <main role="main" class="col-md-10 ml-sm-auto col-lg-10 pt-2">
-                    <router-view :token="token" v-if="isAuth"></router-view>
-                </main>
-            </div>
-          </div>
+<div>
+  <Navbar />
+  <div class="container-fluid">
+    <div class="row">
+      <Sidebar/>
+      <main role="main" class="col-md-10 ml-sm-auto col-lg-10 pt-2">
+        <router-view :token="token" v-if="isAuth"></router-view>
+      </main>
     </div>
+  </div>
+</div>
 </template>
 <script>
 import Navbar from '@/components/backend/Navbar.vue'
@@ -25,12 +25,12 @@ export default {
     this.checkAuth()
   },
   methods: {
-    checkAuth: function () {
+    checkAuth () {
       const vm = this
-      this.token = document.cookie.replace(/(?:(?:^|.*;\s*)logintoken\s*=\s*([^;]*).*$)|^.*$/, '$1')
-      this.$http.defaults.headers.Authorization = `Bearer ${this.token}`
+      vm.token = document.cookie.replace(/(?:(?:^|.*;\s*)logintoken\s*=\s*([^;]*).*$)|^.*$/, '$1')
+      vm.$http.defaults.headers.Authorization = `Bearer ${vm.token}`
       const api = `${process.env.VUE_APP_APIPATH}/auth/check`
-      this.$http.post(api, { api_token: this.token }).then(function (res) {
+      vm.$http.post(api, { api_token: this.token }).then(function (res) {
         if (res.data.success) {
           vm.isAuth = true
         }
@@ -48,6 +48,5 @@ export default {
 
 </script>
 <style lang="scss">
-// @import '../../assets/all.scss';
-@import '../../assets/dashboard.scss';
+@import '../../assets/scss/backend/dashboard';
 </style>

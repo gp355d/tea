@@ -4,13 +4,19 @@ module.exports = {
       sass: {
         prependData: `
         @import "./node_modules/bootstrap/scss/functions.scss";
-        @import "./src/assets/helpers/variables.scss";
+        @import "./src/assets/scss/helpers/variables.scss";
         @import "./node_modules/bootstrap/scss/mixins.scss";
           `
       }
     }
   },
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/tea/'
-    : '/'
+  publicPath: './',
+  chainWebpack: config => {
+    config
+      .plugin('html')
+      .tap(args => {
+        args[0].title = 'tea'
+        return args
+      })
+  }
 }
