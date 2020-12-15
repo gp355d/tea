@@ -1,6 +1,6 @@
 <template>
 <div class="container mb-3">
-  <h2 class="font-weight-bold">精選茶品</h2>
+  <h2 class="font-weight-bold"><i class="fas fa-leaf mr-2 text-primary"></i>精選茶品</h2>
   <div class="row">
     <div class="col-md-12">
       <div class="row">

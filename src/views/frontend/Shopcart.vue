@@ -6,8 +6,8 @@
       <div class="p-3">
         <router-link class="h5 text-primary back" to="/products"><i class="fas fa-chevron-left mr-2"></i><span>繼續購物</span>
         </router-link>
-        <h2 class="font-weight-bold">購物車清單</h2>
-        <div class="d-flex mt-4 bg-light" v-for="item in carts" :key="item.product.id+1">
+        <h2 class="font-weight-bold"><i class="fas fa-leaf mr-2 text-primary"></i>購物車清單</h2>
+        <div class="d-flex mt-4 bg-light flex-sm-nowrap" v-for="item in carts" :key="item.product.id+1">
           <div class="img-fluid shopcart-img" :style="{ backgroundImage: `url(${ item.product.imageUrl[0] })` }" alt="product-img"/>
           <div class="w-100 p-3 shopcart-content">
             <a href="#" @click.prevent="removeCartItem(item.product.id)" class="shopcart-remove-item"><i
@@ -16,7 +16,7 @@
             <p class="mb-1 text-muted" style="font-size: 14px;">{{ item.product.content }}</p>
             <div class="d-flex justify-content-between align-items-center w-100">
               <div class="input-group flex-nowrap flex-lg-nowrap">
-                <div class="d-flex w-50">
+                <div class="control d-flex">
                   <div class="input-group-prepend pr-1">
                     <button class="btn btn-outline-primary rounded-0 border-0" type="button"
                       @click.prevent="updateQuanity(item.product.id, item.quantity - 1)" :disabled="item.quantity === 1"> <i
@@ -30,7 +30,7 @@
                         @click.prevent="updateQuanity(item.product.id, item.quantity + 1)"></i></button>
                   </div>
                 </div>
-                <p class="mb-0 ml-auto text-right h5 d-flex align-items-center">{{ item.product.price | money }}/{{ item.product.unit }}</p>
+                <p class="w-50 mb-0 ml-auto text-right h5 d-flex align-items-center justify-content-end">{{ item.product.price | money }}/{{ item.product.unit }}</p>
               </div>
             </div>
           </div>
@@ -45,7 +45,7 @@
     <div class="col-md-8 bg-white py-5" style="min-height: calc(100vh - 56px - 76px);" v-else>
       <router-link class="h5 text-primary" to="/products"><i class="fas fa-chevron-left mr-2"></i><span>繼續購物</span>
       </router-link>
-      <h2 class="mt-2 font-weight-bold">目前購物車無商品，快去逛逛</h2>
+      <h2 class="mt-2 font-weight-bold"><i class="fas fa-leaf mr-2 text-primary"></i>目前購物車無商品，快去逛逛</h2>
     </div>
   </div>
 </div>
@@ -188,6 +188,17 @@ export default {
     .shopcart-img {
       width: 50%;
     }
+  }
+}
+
+@media (max-width: 400px) {
+  .shopcart-img {
+    // display: none;
+    width: 25%;
+  }
+
+  .control {
+    width: 65%;
   }
 }
 

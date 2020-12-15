@@ -1,6 +1,15 @@
 <template>
   <div class="wrapper container py-4">
     <loading :active.sync="isLoading"></loading>
+          <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-white font-weight-bold">
+          <li class="breadcrumb-item">
+            <router-link class="text-dark" to="/">首頁</router-link>
+          </li>
+          <li class="breadcrumb-item text-primary" v-if="filtercategory === ''">全茶品</li>
+          <li class="breadcrumb-item text-primary" v-else>{{ filtercategory }}</li>
+        </ol>
+      </nav>
     <div class="row">
       <div class="col-md-3 mb-3">
         <ul class="list-group">
@@ -12,7 +21,7 @@
       </div>
       <div class="col-md-9">
         <div class="row">
-          <div class="col-lg-4 col-sm-6 mb-4" v-for="item in filtercategories" :key="item.id">
+          <div class="col-lg-4 col-md-6 mb-4" v-for="item in filtercategories" :key="item.id">
             <div class="card-deck h-100">
               <div class="card rounded shadow">
                 <router-link :to="`/product/${ item.id }`">

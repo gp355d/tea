@@ -10,6 +10,12 @@
   font-size: 25px;
 }
 
+.breadcrumb-item {
+  a:active {
+    font-size: 28px;
+  }
+}
+
 @include media-breakpoint-down(xl) {
   .product-img {
     width: 72px;

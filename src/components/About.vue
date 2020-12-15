@@ -1,6 +1,6 @@
 <template>
 <div class="container mb-3">
-  <h2 class="font-weight-bold about-title">關於tea</h2>
+  <h2 class="font-weight-bold about-title"><i class="fas fa-leaf mr-2 text-primary"></i>關於tea</h2>
   <div class="row justify-content-center">
     <img class="rounded-circle about-img"
       src="https://images.unsplash.com/photo-1531877038798-51499a9eedf0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"

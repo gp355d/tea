@@ -6,7 +6,7 @@
       <div class="bg-white p-4">
         <router-link to="/shopcart" class="h5 text-primary back"><i class="fas fa-chevron-left mr-2"></i><span>返回購物車清單</span>
         </router-link>
-        <h2 class="font-weight-bold">顧客資訊</h2>
+        <h2 class="font-weight-bold"><i class="fas fa-leaf mr-2 text-primary"></i>顧客資訊</h2>
         <validation-observer v-slot="{ invalid }">
           <div class="col-md-12">
             <form @submit.prevent="submitOrder">
@@ -70,7 +70,7 @@
     </div>
     <div class="col-md-5">
       <div class="border p-4 mb-4">
-        <h3 class="font-weight-bold mb-4">訂單明細</h3>
+        <h3 class="font-weight-bold mb-4"><i class="fas fa-leaf mr-2 text-primary"></i>訂單明細</h3>
         <div class="d-flex mb-3" v-for="item in carts" :key="item.product.id+1">
           <img :src="item.product.imageUrl[0]" alt="product-img" class="product-img mr-2">
           <div class="w-100">
@@ -184,10 +184,19 @@ export default {
         vm.getCart()
         vm.loadingItem = false
         vm.coupon = res.data.data
-        Toast.fire({
-          title: '優惠卷已套用',
-          icon: 'success'
-        })
+        const nowTimestamp = new Date().getTime()
+        const deadlineTimestamp = res.data.data.deadline.timestamp * 1000 // 有此優惠券，檢查是否已過期
+        if (nowTimestamp > deadlineTimestamp) {
+          Toast.fire({
+            text: '優惠券已過期',
+            icon: 'error'
+          })
+        } else {
+          Toast.fire({
+            title: '優惠卷已套用',
+            icon: 'success'
+          })
+        }
       })
         .catch(function (error) {
           const errorinfo = error.response.data.errors

@@ -4,7 +4,7 @@
   <div class="mt-5 mb-7" v-if="order.products">
     <div class="row">
       <div class="col-md-6">
-        <h2 class="font-weight-bold">訂單成立</h2>
+        <h2 class="font-weight-bold"><i class="fas fa-leaf mr-2 text-primary"></i>訂單成立</h2>
         <p class="message">感謝您訂購本公司茶品，收到訂單後，預計1~2天出貨，請您耐心等候</p>
         <div class="checkout-img"></div>
         <a class="h5 btn text-primary back" @click.prevent="backtoHome"><i
@@ -13,7 +13,7 @@
       <div class="col-md-6">
         <div class="card rounded-0 py-4">
           <div class="card-header border-bottom-0 bg-white px-4 py-0">
-            <h2 class="font-weight-bold">訂單資訊</h2>
+            <h2 class="font-weight-bold"><i class="fas fa-leaf mr-2 text-primary"></i>訂單資訊</h2>
           </div>
           <div class="card-body px-4 py-0">
             <ul class="list-group list-group-flush">

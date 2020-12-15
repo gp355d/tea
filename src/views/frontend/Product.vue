@@ -1,10 +1,10 @@
 <template>
-<div class="container py-4">
+<div class="wrapper container py-4">
   <loading :active.sync="isLoading"></loading>
   <div class="row justify-content-center" v-if="tmpProducts.imageUrl[0]">
     <div class="col-md-10 mb-3">
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb bg-white">
+        <ol class="breadcrumb bg-white font-weight-bold">
           <li class="breadcrumb-item">
             <router-link class="text-dark" to="/">首頁</router-link>
           </li>
@@ -127,6 +127,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '../../assets/main';
+
 .product {
   height: 50vh;
   background-position: center;
