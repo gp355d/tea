@@ -140,7 +140,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../../assets/main';
+@import '../../assets/scss/frontend/main';
 
 .checkout-img {
   height: 50vh;

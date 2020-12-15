@@ -13,7 +13,7 @@
 </div>
 </template>
 <style lang="scss" scoped>
-@import '../assets/main';
+@import '../assets/scss/frontend/main';
 
 .about-img {
   width: 250px;

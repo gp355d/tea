@@ -12,7 +12,7 @@
 </footer>
 </template>
 <style lang="scss" scoped>
-@import '../assets/main';
+@import '../assets/scss/frontend/main';
 
 .footer-size {
   font-size: 1.5rem;

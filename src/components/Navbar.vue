@@ -29,9 +29,17 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../assets/main';
+@import '../assets/scss/frontend/main';
 
 .logo-size {
   font-size: 2rem;
+
+  &:active {
+    font-size: 2.5rem;
+  }
+}
+
+.navbar-light .navbar-nav .nav-link:active {
+  font-size: 1.25rem;
 }
 </style>

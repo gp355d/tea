@@ -48,5 +48,5 @@ export default {
 
 </script>
 <style lang="scss">
-@import '../../assets/dashboard';
+@import '../../assets/scss/backend/dashboard';
 </style>

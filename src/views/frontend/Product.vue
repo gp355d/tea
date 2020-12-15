@@ -127,7 +127,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../../assets/main';
+@import '../../assets/scss/frontend/main';
 
 .product {
   height: 50vh;

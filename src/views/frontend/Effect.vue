@@ -126,7 +126,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../../assets/main';
+@import '../../assets/scss/frontend/main';
 
 @include media-breakpoint-down(xl) {
   .tea-img {

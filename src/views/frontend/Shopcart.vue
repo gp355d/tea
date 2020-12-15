@@ -146,7 +146,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../../assets/main';
+@import '../../assets/scss/frontend/main';
 
 .shopcart-img {
   width: 120px;

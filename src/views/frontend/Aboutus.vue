@@ -78,7 +78,7 @@
 </div>
 </template>
 <style lang="scss" scoped>
-@import '../../assets/main';
+@import '../../assets/scss/frontend/main';
 
 .dream {
   width: 250px;

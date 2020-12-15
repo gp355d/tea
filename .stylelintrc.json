@@ -1,6 +1,6 @@
 {
   "extends": ["stylelint-config-standard", "stylelint-config-sass-guidelines"],
-  "ignoreFiles": ["dist/**/*", "src/assets/helpers/_variables.scss"],
+  "ignoreFiles": ["dist/**/*", "src/assets/scss/helpers/_variables.scss"],
   "rules": {
     "order/properties-alphabetical-order": null,
     "order/properties-order": [
