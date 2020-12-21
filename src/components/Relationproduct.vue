@@ -1,21 +1,21 @@
 <template>
-<swiper ref="mySwiper" :options="swiperOptions">
-  <swiper-slide class="item mb-5" v-for="item in related" :key="item.id">
-    <div class="card h-100">
-      <div class="relateproduct-img" :style="{ backgroundImage: `url(${ item.imageUrl[0] })` }"
-        @click.prevent="getDetail(item.id)"></div>
-      <div class="card-body">
-        <h6 class="card-title">
-          {{ item.title }}
-        </h6>
-        <div class="text-right pr-2">
-          售價<span class="text-danger font-weight-bold">{{ item.price | money }}</span>
+  <swiper ref="mySwiper" :options="swiperOptions">
+    <swiper-slide class="item mb-5" v-for="item in related" :key="item.id">
+      <div class="card h-100">
+        <div class="relateproduct-img" :style="{ backgroundImage: `url(${ item.imageUrl[0] })` }"
+          @click.prevent="getDetail(item.id)"></div>
+        <div class="card-body">
+          <h6 class="card-title">
+            {{ item.title }}
+          </h6>
+          <div class="text-right pr-2">
+            售價<span class="text-danger font-weight-bold">{{ item.price | money }}</span>
+          </div>
         </div>
       </div>
-    </div>
-  </swiper-slide>
-  <div class="swiper-pagination" slot="pagination"></div>
-</swiper>
+    </swiper-slide>
+    <div class="swiper-pagination" slot="pagination"></div>
+  </swiper>
 </template>
 
 <script>
@@ -55,12 +55,11 @@ export default {
   },
   methods: {
     getProducts () {
-      const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/products`
-      this.$http
-        .get(url)
-        .then((res) => {
-          this.products = res.data.data
-        })
+      const vm = this
+      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/products`
+      vm.$http.get(api).then((res) => {
+        vm.products = res.data.data
+      })
         .catch(() => {
         })
     },
