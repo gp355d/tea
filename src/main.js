@@ -3,9 +3,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import App from './App.vue'
 import router from './router'
-import jquery from 'jquery'
 import 'bootstrap'
-import '../src/assets/all.scss'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
 import './bus'
@@ -16,16 +14,9 @@ import { ValidationObserver, ValidationProvider, configure, localize, extend } f
 import * as rules from 'vee-validate/dist/rules' // 驗證規則檔案
 import zhTW from 'vee-validate/dist/locale/zh_TW.json' // 語系檔案
 import './swal'
+import moneyFilter from './filter/moneyfilter'
 Vue.config.productionTip = false
-window.$ = jquery
 Vue.use(VueAxios, axios)
-Vue.filter('money', function (num) {
-  const n = Number(num)
-  return `$${n.toFixed(0).replace(/./g, (c, i, a) => {
-    const currency = (i && c !== '.' && ((a.length - i) % 3 === 0) ? `, ${c}`.replace(/\s/g, '') : c)
-    return currency
-  })}`
-})
 Vue.component('Loading', Loading)
 Vue.use(VueAwesomeSwiper)
 Object.keys(rules).forEach((rule) => {
@@ -37,6 +28,7 @@ configure({
     invalid: 'is-invalid'
   }
 })
+Vue.filter('money', moneyFilter)
 swiper.use([Navigation, Pagination, Autoplay])
 localize('tw', zhTW)
 Vue.component('ValidationObserver', ValidationObserver)

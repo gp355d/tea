@@ -47,16 +47,16 @@
       </div>
     </div>
   </div>
-  <pg :pages="pagination" @emit-pages="getData"></pg>
+  <Pagination :pages="pagination" @emit-pages="getData"></Pagination>
 </div>
 </template>
 <script>
-/* global $ */
+import $ from 'jquery'
 import Pagination from '@/components/Pagination.vue'
 import Toast from '@/swal'
 export default {
   components: {
-    pg: Pagination
+    Pagination
   },
   data () {
     return {
@@ -86,7 +86,7 @@ export default {
     },
     openimgdelModel (item) {
       $('#deleteimgModal').modal('show')
-      this.tempData = Object.assign({}, item)
+      this.tempData = { ...item }
     },
     deleteimgData () {
       const vm = this

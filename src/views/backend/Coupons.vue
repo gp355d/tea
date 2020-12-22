@@ -117,16 +117,16 @@
       </div>
     </div>
   </div>
-  <pg :pages="pagination" @emit-pages="getCoupons"></pg>
+  <Pagination :pages="pagination" @emit-pages="getCoupons"></Pagination>
 </div>
 </template>
 <script>
-/* global $ */
+import $ from 'jquery'
 import Pagination from '@/components/Pagination.vue'
 import Toast from '@/swal'
 export default {
   components: {
-    pg: Pagination
+    Pagination
   },
   data () {
     return {
@@ -158,7 +158,7 @@ export default {
           $('#couponModal').modal('show')
           break
         case 'edit': {
-          this.tempCoupon = Object.assign({}, item)
+          this.tempCoupon = { ...item }
           const dedlineAt = this.tempCoupon.deadline.datetime.split(' ')
           this.deadline = dedlineAt[0] // 日期
           this.timelimit = dedlineAt[1] // 時間
@@ -166,7 +166,7 @@ export default {
           break
         }
         case 'delete':
-          this.tempCoupon = Object.assign({}, item)
+          this.tempCoupon = { ...item }
           $('#delCouponModal').modal('show')
           break
         default:

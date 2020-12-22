@@ -65,16 +65,16 @@
       </div>
     </div>
   </div>
-  <pg :pages="pagination" @emit-pages="getOrders"></pg>
+  <Pagination :pages="pagination" @emit-pages="getOrders"></Pagination>
 </div>
 </template>
 <script>
-/* global $ */
+import $ from 'jquery'
 import Pagination from '@/components/Pagination.vue'
 import Toast from '@/swal'
 export default {
   components: {
-    pg: Pagination
+    Pagination
   },
   data () {
     return {

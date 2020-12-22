@@ -40,7 +40,7 @@
       </tr>
     </tbody>
   </table>
-  <pg :pages="pagination" @emit-pages="getProducts"></pg>
+  <Pagination :pages="pagination" @emit-pages="getProducts"></Pagination>
   <!-- add、edit產品Modal -->
   <div id="productModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -165,13 +165,13 @@
 </div>
 </template>
 <script>
-/* global $ */
+import $ from 'jquery'
 import Pagination from '@/components/Pagination.vue'
 import Toast from '@/swal'
 import { VueEditor } from 'vue2-editor'
 export default {
   components: {
-    pg: Pagination,
+    Pagination,
     VueEditor
   },
   data () {
@@ -232,7 +232,7 @@ export default {
           this.isNew = false
           break
         case 'delete':
-          this.tempProduct = Object.assign({}, item)
+          this.tempProduct = { ...item }
           $('#delProductModal').modal('show')
           break
         default:
@@ -287,7 +287,7 @@ export default {
       })
     },
     delProduct () {
-      var vm = this
+      const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product/${vm.tempProduct.id}`
       vm.$http.delete(api).then(function () {
         $('#delProductModal').modal('hide') // 刪除成功後關閉 Modal

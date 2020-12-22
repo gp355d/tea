@@ -28,10 +28,10 @@ export default {
     checkAuth () {
       const vm = this
       vm.token = document.cookie.replace(/(?:(?:^|.*;\s*)logintoken\s*=\s*([^;]*).*$)|^.*$/, '$1')
-      vm.$http.defaults.headers.Authorization = `Bearer ${vm.token}`
       const api = `${process.env.VUE_APP_APIPATH}/auth/check`
       vm.$http.post(api, { api_token: this.token }).then(function (res) {
         if (res.data.success) {
+          vm.$http.defaults.headers.Authorization = `Bearer ${vm.token}`
           vm.isAuth = true
         }
       })
