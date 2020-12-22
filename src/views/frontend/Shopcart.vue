@@ -125,7 +125,7 @@ export default {
           text: '商品已刪除',
           icon: 'success'
         })
-        vm.isLoading = false// 讀取效果設為true，即關閉效果
+        vm.isLoading = false// 讀取效果設為false，即關閉效果
       })
         .catch((error) => {
           Toast.fire({
@@ -146,7 +146,7 @@ export default {
           text: '商品已全部刪除',
           icon: 'success'
         })
-        vm.isLoading = false// 讀取效果設為true，即關閉效果
+        vm.isLoading = false// 讀取效果設為false，即關閉效果
       })
         .catch((error) => {
           Toast.fire({

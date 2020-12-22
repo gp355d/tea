@@ -1,10 +1,10 @@
 <template>
-<div>
-  <Banner/>
-  <Content/>
-  <About/>
-  <Recommender/>
-</div>
+  <div>
+    <Banner/>
+    <Content/>
+    <About/>
+    <Recommender/>
+  </div>
 </template>
 
 <script>

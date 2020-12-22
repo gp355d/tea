@@ -80,19 +80,20 @@ export default {
       const vm = this
       vm.isLoading = true
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/products`
-      vm.$http.get(api).then(function (res) {
+      vm.$http.get(api).then((res) => {
         vm.products = res.data.data// 將回傳的資料存入預先定義好的products陣列
-        vm.isLoading = false
         const { categoryName } = vm.$route.params
         if (categoryName) {
           vm.filtercategory = categoryName
         }
+        vm.isLoading = false
       })
-        .catch(function () {
+        .catch(() => {
           Toast.fire({
             title: '無法取得資料，稍後再試',
             icon: 'error'
           })
+          vm.isLoading = false
         })
     },
     addToCart (id, quantity = 1) {
@@ -104,7 +105,7 @@ export default {
         product: id,
         quantity: quantity
       }
-      vm.$http.post(api, carts).then(function (res) {
+      vm.$http.post(api, carts).then(() => {
         vm.$bus.$emit('update-total')
         Toast.fire({
           title: '該商品已加入購物車',
@@ -113,7 +114,7 @@ export default {
         vm.loadingItem = ''
         vm.isLoading = false
       })
-        .catch(function (error) {
+        .catch((error) => {
           const errorinfo = error.response.data.errors
           if (errorinfo) {
             Toast.fire({

@@ -183,7 +183,8 @@ export default {
         imageUrl: []
       },
       isNew: false,
-      fileUploading: false
+      fileUploading: false,
+      isLoading: false
     }
   },
   created () {
@@ -248,13 +249,13 @@ export default {
     },
     updateProduct () {
       const vm = this
-      vm.isLoading = true
       var api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product`// 新增商品API
       var httpMethod = 'post'
       if (!vm.isNew) { // 當不是新增產品時則切換成編輯產品API
         api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product/${vm.tempProduct.id}`
         httpMethod = 'patch'
       }
+      vm.isLoading = true
       vm.$http[httpMethod](api, vm.tempProduct).then(() => {
         $('#productModal').modal('hide') // AJAX新增成功後關閉Modal
         Toast.fire({

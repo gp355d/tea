@@ -244,7 +244,6 @@ export default {
             icon: 'success'
           })
         }
-        vm.isLoading = false
       })
     }
   }
