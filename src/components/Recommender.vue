@@ -1,15 +1,15 @@
 <template>
-  <div class="container mb-3">
-    <h2 class="font-weight-bold"><i class="fas fa-leaf mr-2 text-primary"></i>精選茶品</h2>
-    <div class="row">
+  <div class="container">
+    <h2 class="font-weight-bold text-center mb-3"><i class="fas fa-leaf mr-2 text-primary"></i>精選茶品</h2>
+    <div class="row mb-4">
       <div class="col-md-12">
         <div class="row">
-          <div class="col-md-4 mt-4" v-for="item in newArray" :key="item.id">
+          <div class="col-md-4 product" v-for="item in newArray" :key="item.id">
             <router-link :to="`/product/${ item.id }`" target="_blank">
               <div class="card rounded shadow h-100">
                 <div class="product-img" :style="{backgroundImage: `url(${item.imageUrl[0]})`}" />
                 <div class="card-body intro">
-                  <h4 class="card-title font-weight-bold">{{ item.title }}</h4>
+                  <h4 class="card-title font-weight-bold text-center">{{ item.title }}</h4>
                   <p class="card-text" v-html="item.content">{{ item.content }}</p>
                 </div>
                 <a class="btn btn-primary font-weight-bold">來去看看</a>
@@ -60,28 +60,23 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.product-img {
-  width: 100%;
-  height: 220px;
-  background-position: center;
-  background-size: cover;
 
-  &:hover {
-    opacity: 0.5;
-  }
-
-  &:active {
-    opacity: 0.5;
-  }
+.card:hover .product-img,
+.card:hover .intro {
+  color: $blue;
+  opacity: 0.5;
 }
 
 @include media-breakpoint-down(xl) {
+  .product-img {
+    width: 100%;
+    height: 220px;
+    background-position: center;
+    background-size: cover;
+  }
+
   .intro {
     color: $black;
-
-    &:hover {
-      color: $blue;
-    }
 
     &:active {
       color: $blue;
@@ -89,6 +84,18 @@ export default {
 
     .card-text {
       font-size: 1.125rem;
+    }
+  }
+}
+
+@media (max-width: 757px) {
+  .row {
+    .product {
+      margin-bottom: 1.25rem;
+    }
+
+    .product:nth-child(3) {
+      margin-bottom: 0;
     }
   }
 }

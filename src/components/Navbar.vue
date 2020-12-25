@@ -35,11 +35,8 @@ export default {
   font-size: 2rem;
 
   &:active {
-    font-size: 2.5rem;
+    color: $black;
   }
 }
 
-.navbar-light .navbar-nav .nav-link:active {
-  font-size: 1.25rem;
-}
 </style>

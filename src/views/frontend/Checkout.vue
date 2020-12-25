@@ -4,16 +4,16 @@
     <div class="mt-5 mb-7" v-if="order.products">
       <div class="row">
         <div class="col-md-6">
-          <h2 class="font-weight-bold"><i class="fas fa-leaf mr-2 text-primary"></i>訂單成立</h2>
+          <h2 class="font-weight-bold mb-3"><i class="fas fa-leaf mr-2 text-primary"></i>訂單成立</h2>
           <p class="message">感謝您訂購本公司茶品，收到訂單後，預計1~2天出貨，請您耐心等候</p>
           <div class="checkout-img"></div>
-          <a class="h5 btn text-primary back" @click.prevent="backtoHome"><i
-              class="fas fa-chevron-left mr-2"></i><span>回到首頁</span></a>
+          <a class="h5 btn text-dark back" @click.prevent="backtoHome"><i class="fas fa-chevron-left mr-2"></i><span
+              class="continue">回到首頁</span></a>
         </div>
         <div class="col-md-6">
           <div class="card rounded-0 py-4">
             <div class="card-header border-bottom-0 bg-white px-4 py-0">
-              <h2 class="font-weight-bold"><i class="fas fa-leaf mr-2 text-primary"></i>訂單資訊</h2>
+              <h2 class="font-weight-bold mb-3"><i class="fas fa-leaf mr-2 text-primary"></i>訂單資訊</h2>
             </div>
             <div class="card-body px-4 py-0">
               <ul class="list-group list-group-flush">
@@ -26,13 +26,12 @@
                         <p class="product-quantity mb-0">X{{ product.quantity }}</p>
                       </div>
                       <div class="d-flex justify-content-between mt-auto">
-                        <p class="text-muted mb-0"><small
-                            class="product-small-text">{{ product.product.price | money }}/{{ product.product.unit }}</small>
+                        <p class="text-muted mb-0"><small class="product-small-text">{{ product.product.price | money
+                            }}/{{ product.product.unit }}</small>
                         </p>
                         <p class="product-price mb-0 price">{{ product.product.price | money }}</p>
                       </div>
                     </div>
-                  </div>
                 </li>
                 <li class="list-group-item px-0 pb-0">
                   <table class="table text-muted">
@@ -59,7 +58,8 @@
                   <div class="d-flex justify-content-end font-weight-bold" v-if="order.paid === false">
                     <button class="btn btn-outline-primary" @click.prevent="payMoney" :disabled="order.paid === true">
                       <i class="fas fa-spinner fa-spin" v-if="loadingItem">
-                      </i>進行付款</button>
+                      </i>進行付款
+                    </button>
                   </div>
                 </li>
               </ul>

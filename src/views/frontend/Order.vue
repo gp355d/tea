@@ -4,9 +4,10 @@
     <div class="row justify-content-center flex-md-row flex-column-reverse mt-3" v-if="carts.length > 0">
       <div class="col-md-7">
         <div class="bg-white p-4">
-          <router-link to="/shopcart" class="h5 text-primary back"><i class="fas fa-chevron-left mr-2"></i><span>返回購物車清單</span>
+          <router-link to="/shopcart" class="h5 text-dark back"><i class="fas fa-chevron-left mr-2"></i><span
+              class="continue">返回購物車清單</span>
           </router-link>
-          <h2 class="font-weight-bold"><i class="fas fa-leaf mr-2 text-primary"></i>顧客資訊</h2>
+          <h2 class="font-weight-bold mb-3"><i class="fas fa-leaf mr-2 text-primary"></i>顧客資訊</h2>
           <validation-observer v-slot="{ invalid }">
             <div class="col-md-12">
               <form @submit.prevent="submitOrder">
@@ -57,6 +58,11 @@
                   <label for="Message">留言</label>
                   <textarea class="form-control" id="Message" rows="7" v-model="temporders.message"></textarea>
                 </div>
+                <div class="d-flex justify-content-between">
+                  <p class="text-muted mb-0"><small class="product-small-text">{{ item.product.price | money }} /
+                      {{ item.product.unit }}</small></p>
+                  <p class="product-price mb-0">{{ item.product.price | money }}</p>
+                </div>
                 <div
                   class=" w-100 d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end">
                   <button type="submit" class="btn btn-primary btn-block py-3 px-7 rounded-0" :disabled="invalid"><i
@@ -70,8 +76,8 @@
       </div>
       <div class="col-md-5">
         <div class="border p-4 mb-4">
-          <h3 class="font-weight-bold mb-4"><i class="fas fa-leaf mr-2 text-primary"></i>訂單明細</h3>
-          <div class="d-flex mb-3" v-for="item in carts" :key="item.product.id+1">
+          <h3 class="font-weight-bold mb-3"><i class="fas fa-leaf mr-2 text-primary"></i>訂單明細</h3>
+          <div class="d-flex mb-3 " v-for="item in carts" :key="item.product.id+1">
             <img :src="item.product.imageUrl[0]" alt="product-img" class="product-img mr-2">
             <div class="w-100">
               <div class="d-flex justify-content-between font-weight-bold">
@@ -84,6 +90,7 @@
                 <p class="product-price mb-0">{{ item.product.price | money }}</p>
               </div>
             </div>
+            <hr>
           </div>
           <table class="pay-info table mt-4 border-top border-bottom text-muted">
             <tbody>

@@ -4,10 +4,10 @@
     <div class="row justify-content-center">
       <div class="col-md-8 bg-white py-5 shadow shopcart-layout" v-if="carts.length > 0">
         <div class="p-3">
-          <router-link class="h5 text-primary back" to="/products"><i class="fas fa-chevron-left mr-2"></i><span>繼續購物</span>
+          <router-link class="h5 text-dark back" to="/products"><i class="fas fa-chevron-left mr-2"></i><span class="continue">繼續購物</span>
           </router-link>
-          <h2 class="font-weight-bold"><i class="fas fa-leaf mr-2 text-primary"></i>購物車清單</h2>
-          <div class="d-flex mt-4 bg-light flex-sm-nowrap" v-for="item in carts" :key="item.product.id+1">
+          <h2 class="font-weight-bold mb-3"><i class="fas fa-leaf mr-2 text-primary"></i>購物車清單</h2>
+          <div class="d-flex mt-0 bg-light flex-sm-nowrap" v-for="item in carts" :key="item.product.id+1">
             <div class="img-fluid shopcart-img" :style="{ backgroundImage: `url(${ item.product.imageUrl[0] })` }" alt="product-img"/>
             <div class="w-100 p-3 shopcart-content">
               <a href="#" @click.prevent="removeCartItem(item.product.id)" class="shopcart-remove-item"><i
@@ -43,7 +43,9 @@
         </div>
       </div>
       <div class="col-md-8 bg-white py-5" style="min-height: calc(100vh - 56px - 76px);" v-else>
-        <router-link class="h5 text-primary" to="/products"><i class="fas fa-chevron-left mr-2"></i><span>繼續購物</span>
+        <router-link class="h5 text-dark back" to="/products">
+        <i class="fas fa-chevron-left mr-2"></i>
+        <span class="continue">繼續購物</span>
         </router-link>
         <h2 class="mt-2 font-weight-bold"><i class="fas fa-leaf mr-2 text-primary"></i>目前購物車無商品，快去逛逛</h2>
       </div>

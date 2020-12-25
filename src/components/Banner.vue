@@ -1,5 +1,5 @@
 <template>
-  <div class="position-relative mb-5">
+  <div class="position-relative mb-4">
     <div class="position-absolute banner-bg"></div>
     <div class="container d-flex flex-column justify-content-end banner-layout">
       <div class="slogan mb-4 d-inline-block">

@@ -79,6 +79,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.card:hover .relateproduct-img,
+.card:hover .card-body {
+  opacity: 0.5;
+}
+
 @include media-breakpoint-down(xl) {
   .relateproduct-img {
     width: 100%;
@@ -86,10 +91,6 @@ export default {
     background-position: center;
     background-size: cover;
     cursor: pointer;
-
-    &:active {
-      opacity: 0.5;
-    }
   }
 }
 </style>
