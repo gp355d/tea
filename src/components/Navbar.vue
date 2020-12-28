@@ -34,6 +34,10 @@ export default {
 .logo-size {
   font-size: 2rem;
 
+  &:hover {
+    color: $black;
+  }
+
   &:active {
     color: $black;
   }

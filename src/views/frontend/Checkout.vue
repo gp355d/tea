@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper container">
     <loading :active.sync="isLoading"></loading>
-    <div class="mt-5 mb-7" v-if="order.products">
+    <div class="mt-3 mb-3" v-if="order.products">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3 mb-md-0 mb-lg-0">
           <h2 class="font-weight-bold mb-3"><i class="fas fa-leaf mr-2 text-primary"></i>訂單成立</h2>
           <p class="message">感謝您訂購本公司茶品，收到訂單後，預計1~2天出貨，請您耐心等候</p>
           <div class="checkout-img"></div>
@@ -32,6 +32,7 @@
                         <p class="product-price mb-0 price">{{ product.product.price | money }}</p>
                       </div>
                     </div>
+                  </div>
                 </li>
                 <li class="list-group-item px-0 pb-0">
                   <table class="table text-muted">

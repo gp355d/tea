@@ -81,10 +81,6 @@ export default {
     &:active {
       color: $blue;
     }
-
-    .card-text {
-      font-size: 1.125rem;
-    }
   }
 }
 

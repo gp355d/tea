@@ -1076,7 +1076,8 @@ $breadcrumb-padding-y:              .75rem !default;
 $breadcrumb-padding-x:              0rem !default;
 $breadcrumb-item-padding:           .5rem !default;
 
-$breadcrumb-margin-bottom:          1rem !default;
+// $breadcrumb-margin-bottom:          1rem !default;
+$breadcrumb-margin-bottom:          0 !default;
 
 $breadcrumb-bg:                     $gray-200 !default;
 $breadcrumb-divider-color:          $gray-600 !default;

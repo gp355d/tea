@@ -106,11 +106,11 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-10">
-          <h3 class="font-weight-bold mb-3"><i class="fas fa-leaf mr-2 text-primary"></i>相關茶品</h3>
-          <Relationproduct :product="tmpProducts" @update="getPeoductDetail" />
-        </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <h3 class="font-weight-bold mb-3"><i class="fas fa-leaf mr-2 text-primary"></i>相關茶品</h3>
+        <Relationproduct :product="tmpProducts" @update="getPeoductDetail" />
       </div>
     </div>
   </div>

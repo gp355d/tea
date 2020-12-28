@@ -70,8 +70,8 @@
           <i class="fas fa-leaf mr-2 text-primary"></i>
           茶品系列
         </h2>
-        <h3 class="coupon-title">茶品搭配周邊！ 自用贈禮兩相宜！ 限時限量搶購中！超值優惠</h3>
-        <h5 class="coupon-subtitle">慶祝開幕折扣優惠碼輸入「 tea 」 全品項打 9 折，心動不如馬上行動！</h5>
+        <h3 class="coupon-title">茶品自用贈禮兩相宜！ 限時限量搶購中！超值優惠</h3>
+        <h5 class="coupon-subtitle">折扣優惠碼輸入「 tea 」 全品項打 9 折，心動不如馬上行動！</h5>
         <div class="row">
           <div class="col-md-4">
             <router-link class="text-dark" :to="`/products`" target="_blank">

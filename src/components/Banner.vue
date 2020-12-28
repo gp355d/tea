@@ -10,27 +10,6 @@
   </div>
 </template>
 <style lang="scss" scoped>
-.banner-bg {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-position: center;
-  background-size: cover;
-  background-image: url('https://images.unsplash.com/photo-1582966953402-a86e32ecdf75?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');
-}
-
-.banner-layout {
-  min-height: 50vh;
-}
-
-.slogan {
-  z-index: 1;
-  width: 300px;
-  color: #fff;
-  background-color: #000;
-  opacity: 0.6;
-}
 
 @include media-breakpoint-up(lg) {
   .slogan {
@@ -62,5 +41,27 @@
       font-size: 1.5rem;
     }
   }
+}
+
+.banner-bg {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position: center;
+  background-size: cover;
+  background-image: url('https://images.unsplash.com/photo-1582966953402-a86e32ecdf75?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');
+}
+
+.banner-layout {
+  min-height: 320px;
+}
+
+.slogan {
+  z-index: 1;
+  width: 300px;
+  color: #fff;
+  background-color: #000;
+  opacity: 0.6;
 }
 </style>

@@ -65,7 +65,7 @@ export default {
   data () {
     return {
       products: [],
-      categories: ['茶葉類', '沖泡類'],
+      categories: ['茶葉類', '沖泡類', '組合包'],
       filtercategory: '',
       loadingItem: '',
       isLoading: false

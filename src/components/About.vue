@@ -36,12 +36,4 @@
 }
 
 @import '../assets/scss/frontend/main';
-
-// @include media-breakpoint-down(lg) {
-//   .intro {
-//     .about-info {
-//       font-size: 1.25rem;
-//     }
-//   }
-// }
 </style>

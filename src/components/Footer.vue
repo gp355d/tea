@@ -6,12 +6,12 @@
           <span class="logo-font footer-size">tea</span>
         </li>
         <li class="list-inline-item">
-          <a href="#">
+          <a class="social-link" href="#">
             <i aria-hidden="true" class="fab fa-instagram" style="font-size: 2em;"></i>
           </a>
         </li>
         <li class="list-inline-item">
-          <a href="#">
+          <a class="social-link" href="#">
             <i aria-hidden="true" class="fab fa-facebook-square" style="font-size: 2em;"></i>
           </a>
         </li>
@@ -24,5 +24,17 @@
 
 .footer-size {
   font-size: 1.5rem;
+}
+
+.social-link {
+  color: $white;
+
+  &:active {
+    color: $black;
+  }
+
+  &:hover {
+    color: $black;
+  }
 }
 </style>
