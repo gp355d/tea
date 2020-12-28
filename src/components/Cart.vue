@@ -1,9 +1,13 @@
 <template>
-<div>
-  <i class="fas fa-shopping-cart">
-    <span class="badge badge-pill badge-danger" style="position: relative;left: -5px;top:-8px">{{ cartTotal }}</span>
-  </i>
-</div>
+  <div>
+    <i class="fas fa-shopping-cart">
+      <span class="badge badge-pill badge-danger" style="position: relative;
+      top: -8px;
+      left: -5px;">
+        {{ cartTotal }}
+      </span>
+    </i>
+  </div>
 </template>
 <script>
 export default {
@@ -20,13 +24,12 @@ export default {
   },
   methods: {
     getCart () {
+      const vm = this
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`
-      this.$http.get(api)
-        .then((res) => {
-          this.cartTotal = res.data.data.length
-        })
+      vm.$http.get(api).then((res) => {
+        vm.cartTotal = res.data.data.length
+      })
         .catch(() => {
-          this.isLoading = false
         })
     }
   }

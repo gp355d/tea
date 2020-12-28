@@ -6,8 +6,22 @@
   font-family: 'Lobster', cursive;
 }
 
-.back :active {
-  font-size: 25px;
+.back:active i {
+  color: $primary;
+  font-weight: bold;
+}
+
+.back:active .continue {
+  color: $primary;
+  font-weight: bold;
+}
+
+.back:hover i {
+  color: $primary;
+}
+
+.back:hover .continue {
+  color: $primary;
 }
 
 .breadcrumb-item {
