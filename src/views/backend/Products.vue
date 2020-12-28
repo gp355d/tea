@@ -71,7 +71,7 @@
                   </label>
                   <input id="customFile" ref="file" type="file" class="form-control" @change="uploadFile">
                 </div>
-                <img class="img-fluid" :src="tempProduct.imageUrl[0]" alt />
+                <img class="img-fluid" :src="tempProduct.imageUrl[0]" alt="upload-img" />
               </div>
               <div class="col-sm-8">
                 <div class="form-group">
