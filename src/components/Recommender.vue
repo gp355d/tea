@@ -23,6 +23,7 @@
 </template>
 <script>
 import Toast from '@/swal'
+
 export default {
   data () {
     return {
@@ -49,8 +50,8 @@ export default {
         })
     },
     random (num) {
-      for (var index = 0; index < num; index++) {
-        var n = Math.floor(Math.random() * this.products.length)
+      for (let index = 0; index < num; index++) {
+        const n = Math.floor(Math.random() * this.products.length)
         this.newArray.push(this.products[n])
         this.products.splice(n, 1)
       }

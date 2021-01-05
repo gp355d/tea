@@ -127,7 +127,7 @@ export default {
           text: '商品已刪除',
           icon: 'success'
         })
-        vm.isLoading = false// 讀取效果設為false，即關閉效果
+        vm.isLoading = false
       })
         .catch((error) => {
           Toast.fire({
@@ -139,7 +139,7 @@ export default {
     },
     removeAllCartItem () {
       const vm = this
-      vm.isLoading = true// 讀取效果設為true，即打開效果
+      vm.isLoading = true
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping/all/product` // 移除購物車內所有資料的API
       vm.$http.delete(api).then(() => {
         vm.$bus.$emit('update-total')
@@ -148,7 +148,7 @@ export default {
           text: '商品已全部刪除',
           icon: 'success'
         })
-        vm.isLoading = false// 讀取效果設為false，即關閉效果
+        vm.isLoading = false
       })
         .catch((error) => {
           Toast.fire({
@@ -162,6 +162,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '../../assets/scss/frontend/main';
 
 @include media-breakpoint-down(xl) {
   .shopcart-layout {
@@ -182,13 +183,6 @@ export default {
       }
     }
   }
-
-  // .cart > {
-  //   .cart-list:last-child {
-  //     margin-bottom: 0;
-  //     color: #f00;
-  //   }
-  // }
 }
 
 @include media-breakpoint-between(md, lg) {
@@ -231,5 +225,4 @@ export default {
   }
 }
 
-@import '../../assets/scss/frontend/main';
 </style>

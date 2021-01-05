@@ -12,6 +12,7 @@ import Banner from '@/components/Banner.vue'
 import Content from '@/components/Content.vue'
 import About from '@/components/About.vue'
 import Recommender from '@/components/Recommender.vue'
+
 export default {
   components: {
     Banner,

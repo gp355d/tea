@@ -10,6 +10,8 @@
   </div>
 </template>
 <script>
+import Toast from '@/swal'
+
 export default {
   data () {
     return {
@@ -30,6 +32,10 @@ export default {
         vm.cartTotal = res.data.data.length
       })
         .catch(() => {
+          Toast.fire({
+            title: '無法取得資料，稍後再試',
+            icon: 'error'
+          })
         })
     }
   }

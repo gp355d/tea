@@ -125,6 +125,7 @@
 import $ from 'jquery'
 import Pagination from '@/components/Pagination.vue'
 import Toast from '@/swal'
+
 export default {
   components: {
     Pagination

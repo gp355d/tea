@@ -14,6 +14,7 @@
 <script>
 import Navbar from '@/components/backend/Navbar.vue'
 import Sidebar from '@/components/backend/Sidebar.vue'
+
 export default {
   data () {
     return {

@@ -118,6 +118,7 @@
 <script>
 import Relationproduct from '@/components/Relationproduct.vue'
 import Toast from '@/swal'
+
 export default {
   data () {
     return {

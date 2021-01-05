@@ -124,6 +124,7 @@
 </template>
 <script>
 import Toast from '@/swal'
+
 export default {
   data () {
     return {
@@ -155,7 +156,7 @@ export default {
   methods: {
     getCart () {
       const vm = this
-      vm.isLoading = true// 讀取效果設為true，即打開效果
+      vm.isLoading = true
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`// 取得購物車的API
       vm.$http.get(api).then((res) => {
         vm.carts = res.data.data

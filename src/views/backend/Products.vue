@@ -170,6 +170,7 @@ import $ from 'jquery'
 import Pagination from '@/components/Pagination.vue'
 import Toast from '@/swal'
 import { VueEditor } from 'vue2-editor'
+
 export default {
   components: {
     Pagination,
@@ -249,8 +250,8 @@ export default {
     },
     updateProduct () {
       const vm = this
-      var api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product`// 新增商品API
-      var httpMethod = 'post'
+      let api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product`// 新增商品API
+      let httpMethod = 'post'
       if (!vm.isNew) { // 當不是新增產品時則切換成編輯產品API
         api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product/${vm.tempProduct.id}`
         httpMethod = 'patch'
@@ -274,7 +275,7 @@ export default {
         })
     },
     uploadFile () {
-      var vm = this
+      const vm = this
       vm.isLoading = true
       vm.fileUploading = true
       const uploadedFile = vm.$refs.file.files[0]

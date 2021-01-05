@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import Toast from '@/swal'
+
 export default {
   name: 'carrousel',
   data () {
@@ -61,6 +63,10 @@ export default {
         vm.products = res.data.data
       })
         .catch(() => {
+          Toast.fire({
+            title: '無法取得資料，稍後再試',
+            icon: 'error'
+          })
         })
     },
     getDetail (id) {
